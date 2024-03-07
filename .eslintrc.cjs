@@ -20,5 +20,5 @@ module.exports = {
       },
     ],
   },
-  ignorePatterns: ['.storybook', '.eslintrc.cjs'],
+  ignorePatterns: ['.storybook'],
 };
