@@ -15,13 +15,13 @@ export type BusItem = {
   secondArrivalBusCrowding: string;
 };
 
-export const STATUS_COLOR: { [key: string]: string } = {
+export const StatusColor: { [key: string]: string } = {
   CROWD: 'red',
   NORMAL: 'blue',
   EASYGOING: 'green',
 };
 
-export const STATUS_COLOR_KR: { [key: string]: string } = {
+export const StatusColorKr: { [key: string]: string } = {
   CROWD: '혼잡',
   NORMAL: '보통',
   EASYGOING: '여유',
