@@ -1,11 +1,11 @@
 module.exports = {
   extends: [
     'next/core-web-vitals',
-    'prettier',
     'airbnb',
     'airbnb-typescript',
     'plugin:@typescript-eslint/recommended',
     'plugin:storybook/recommended',
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -13,6 +13,8 @@ module.exports = {
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
+    'import/prefer-default-export': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'react/function-component-definition': [
       2,
       {
