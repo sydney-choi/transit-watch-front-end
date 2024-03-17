@@ -5,7 +5,7 @@ import { Input, InputGroup, InputLeftElement, Box } from '@chakra-ui/react';
 import useDebounce from '@/hooks/useDebounce';
 import useOutsideClick from '@/hooks/useOutsideClick';
 import SearchIcon from '@/components/icons/search';
-import Dropdown from '@/components/Search/dropdown';
+import Dropdown from '@/components/search/dropdown';
 import { StationItem } from '@/app/lib/constant';
 
 const SearchInput = () => {
