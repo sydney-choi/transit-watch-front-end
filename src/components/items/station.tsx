@@ -2,7 +2,6 @@
 
 import { List, ListItem, Text, HStack, Box } from '@chakra-ui/react';
 import BookmarkIcon from '@/components/icons/bookmark';
-import { StationItem } from '@/app/lib/constant';
 
 interface ItemsProps {
   items: StationItem[];
