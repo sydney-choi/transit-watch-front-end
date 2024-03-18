@@ -18,7 +18,7 @@ export const Default: Story = {
         name: '경기도인재개발원.연구원.평생교육진흥원.여성가족재단',
         direction: '용산우체국',
         stationNumber: ['00001'],
-        hasBookmark: false,
+        hasBookmark: true,
       },
       {
         stationId: '2',

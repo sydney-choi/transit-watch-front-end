@@ -1,7 +1,5 @@
-'use client';
-
-import { List, ListItem, Text, HStack, Box } from '@chakra-ui/react';
-import BookmarkIcon from '@/components/icons/bookmark';
+import { List } from '@chakra-ui/react';
+import { Item } from '@/components/items/stationItem';
 
 interface ItemsProps {
   items: StationItem[];
@@ -15,8 +13,9 @@ const Items = ({ items, onSelect }: ItemsProps) => {
   return (
     <List>
       {items.map((item) => (
-        <ListItem
+        <Item
           key={item.stationId}
+          item={item}
           onClick={
             onSelect
               ? () => {
@@ -24,27 +23,7 @@ const Items = ({ items, onSelect }: ItemsProps) => {
                 }
               : undefined
           }
-        >
-          <HStack
-            boxSizing="border-box"
-            p="0.5rem"
-            cursor={item.hasBookmark ? 'default' : 'pointer'}
-            gap={0}
-            h="100%"
-            w="100%"
-            _hover={item.hasBookmark ? { bgColor: 'inherit' } : { bgColor: '#e6e6e6' }}
-          >
-            {item.hasBookmark === true && <BookmarkIcon />}
-            <Box ml="0.5rem">
-              <Text fontSize="20px" fontWeight="bold">
-                {item.name}
-              </Text>
-              <Text fontSize="14px" color="grey">
-                {item.direction}방향({item.stationNumber})
-              </Text>
-            </Box>
-          </HStack>
-        </ListItem>
+        />
       ))}
     </List>
   );
