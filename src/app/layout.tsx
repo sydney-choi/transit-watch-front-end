@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { UIProvider } from '@/components/provider/UIProvider';
+import UIProvider from '@/components/provider/UIProvider';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });

@@ -7,7 +7,7 @@ export const convertSecToMinText = (target: string) => {
   if (targetMinute < ONE_MINUTE) {
     elapsedText = '곧 도착';
   } else {
-    elapsedText = `${targetMinute  }분`;
+    elapsedText = `${targetMinute}분`;
   }
 
   return elapsedText;
