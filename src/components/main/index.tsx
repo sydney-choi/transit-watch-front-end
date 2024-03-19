@@ -1,7 +1,7 @@
-import { Badge, Box, Flex, Stack, Text, Heading } from '@chakra-ui/react';
-import Items from '@/components/items/station';
+import { Badge, Box, Flex, Stack, Text, Heading, List } from '@chakra-ui/react';
 import MainIcon from '@/components/icons/main';
 import SearchInput from '@/components/search';
+import StationItem from '@/components/items/stationItem';
 
 const Main = () => {
   const options = [
@@ -29,7 +29,15 @@ const Main = () => {
           즐겨찾는 정류장
         </Heading>
         <Box minH="120px" border="1px solid gray" borderRadius="5px">
-          {options ? <Items items={options} /> : <Text>즐겨찾는 정류장을 등록하세요</Text>}
+          {options ? (
+            <List>
+              {options.map((option) => (
+                <StationItem key={option.stationId} item={option} onClick={undefined} />
+              ))}
+            </List>
+          ) : (
+            <Text>즐겨찾는 정류장을 등록하세요</Text>
+          )}
         </Box>
       </Box>
       <Box p="8px">
