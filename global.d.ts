@@ -3,7 +3,7 @@ declare global {
     stationId: string;
     name: string;
     direction: string;
-    stationNumber: Array<string>;
+    stationNumber: string[];
     hasBookmark: boolean;
   };
 
