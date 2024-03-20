@@ -1,12 +1,12 @@
 import { ListItem, Text, HStack, Box } from '@chakra-ui/react';
-import BookmarkIcon from '@/components/icons/bookmark';
+import BookmarkIcon from '@/components/icons/BookmarkIcon';
 
 interface StationItemProps {
-  item: StationItem;
+  item: TStationItem;
   onClick?: () => void;
 }
 
-const StationItem = ({ item, onClick }: StationItemProps) => (
+const Station = ({ item, onClick }: StationItemProps) => (
   <ListItem onClick={onClick}>
     <HStack
       boxSizing="border-box"
@@ -30,4 +30,4 @@ const StationItem = ({ item, onClick }: StationItemProps) => (
   </ListItem>
 );
 
-export default StationItem;
+export default Station;

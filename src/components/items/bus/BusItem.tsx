@@ -1,8 +1,8 @@
 import { ListItem, Text, HStack, Box, Flex, Badge, VStack } from '@chakra-ui/react';
-import { convertSecToMinText } from '@/app/lib/utils';
-import { StatusColor, StatusColorKr } from '@/app/lib/constant';
+import { convertSecToMinText } from '@/app/_lib/utils';
+import { STATUS_COLOR_KR, STATUS_COLOR } from '@/app/_lib/constant';
 
-const Item = ({ item }: { item: BusItem }) => (
+const BusItem = ({ item }: { item: TBusItem }) => (
   <ListItem key={item.busNumber}>
     <HStack boxSizing="border-box" p="0.5rem" h="100%" w="100%">
       <Box w="30%" whiteSpace="wrap">
@@ -19,11 +19,11 @@ const Item = ({ item }: { item: BusItem }) => (
           <Text>{convertSecToMinText(item.secondArrivalTime)}</Text>
         </VStack>
         <VStack alignItems="flex-end" justifyContent="center">
-          <Badge colorScheme={StatusColor[item.firstArrivalBusCrowding]}>
-            {StatusColorKr[item.firstArrivalBusCrowding]}
+          <Badge colorScheme={STATUS_COLOR[item.firstArrivalBusCrowding]}>
+            {STATUS_COLOR_KR[item.firstArrivalBusCrowding]}
           </Badge>
-          <Badge colorScheme={StatusColor[item.secondArrivalBusCrowding]}>
-            {StatusColorKr[item.secondArrivalBusCrowding]}
+          <Badge colorScheme={STATUS_COLOR[item.secondArrivalBusCrowding]}>
+            {STATUS_COLOR_KR[item.secondArrivalBusCrowding]}
           </Badge>
         </VStack>
       </Flex>
@@ -31,4 +31,4 @@ const Item = ({ item }: { item: BusItem }) => (
   </ListItem>
 );
 
-export default Item;
+export default BusItem;

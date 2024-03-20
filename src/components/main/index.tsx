@@ -1,7 +1,7 @@
 import { Badge, Box, Flex, Stack, Text, Heading, List } from '@chakra-ui/react';
-import MainIcon from '@/components/icons/main';
+import MainIcon from '@/components/icons/MainIcon';
 import SearchInput from '@/components/search';
-import StationItem from '@/components/items/stationItem';
+import StationItem from '@/components/items/station/StationItem';
 
 const Main = () => {
   const options = [
