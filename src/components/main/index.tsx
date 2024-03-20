@@ -1,6 +1,6 @@
 import { Badge, Box, Flex, Stack, Text, Heading, List } from '@chakra-ui/react';
 import MainIcon from '@/components/icons/MainIcon';
-import SearchInput from '@/components/search';
+import SearchBox from '@/components/search';
 import StationItem from '@/components/items/station/StationItem';
 
 const Main = () => {
@@ -21,7 +21,7 @@ const Main = () => {
           <MainIcon />
         </Box>
         <Box flex="1">
-          <SearchInput />
+          <SearchBox />
         </Box>
       </Flex>
       <Box p="0 0.5rem">

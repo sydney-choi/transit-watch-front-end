@@ -7,7 +7,7 @@ import useOutsideClick from '@/hooks/useOutsideClick';
 import SearchIcon from '@/components/icons/SearchIcon';
 import Dropdown from '@/components/search/Dropdown';
 
-const SearchInput = () => {
+const SearchBox = () => {
   const [searchText, setSearchText] = useState<string>('');
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   // const [selectedOption, setSelectedOption] = useState<string>('');
@@ -64,4 +64,4 @@ const SearchInput = () => {
   );
 };
 
-export default SearchInput;
+export default SearchBox;

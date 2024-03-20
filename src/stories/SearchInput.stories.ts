@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import SearchInput from '@/components/search';
+import SearchBox from '@/components/search';
 
 const meta = {
-  title: 'Example/SearchInput',
-  component: SearchInput,
-} satisfies Meta<typeof SearchInput>;
+  title: 'Example/SearchBox',
+  component: SearchBox,
+} satisfies Meta<typeof SearchBox>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
