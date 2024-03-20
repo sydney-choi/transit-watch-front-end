@@ -6,7 +6,7 @@ interface StationItemProps {
   onClick?: () => void;
 }
 
-const Station = ({ item, onClick }: StationItemProps) => (
+const StationItem = ({ item, onClick }: StationItemProps) => (
   <ListItem onClick={onClick}>
     <HStack
       boxSizing="border-box"
@@ -30,4 +30,4 @@ const Station = ({ item, onClick }: StationItemProps) => (
   </ListItem>
 );
 
-export default Station;
+export default StationItem;
