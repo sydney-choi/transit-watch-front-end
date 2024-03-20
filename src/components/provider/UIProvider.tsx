@@ -2,6 +2,8 @@
 
 import { ChakraProvider } from '@chakra-ui/react';
 
-export const UIProvider = ({ children }: { children: React.ReactNode }) => (
+const UIProvider = ({ children }: { children: React.ReactNode }) => (
   <ChakraProvider resetCSS>{children}</ChakraProvider>
 );
+
+export default UIProvider;

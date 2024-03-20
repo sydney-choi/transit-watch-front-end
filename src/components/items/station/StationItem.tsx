@@ -1,8 +1,8 @@
 import { ListItem, Text, HStack, Box } from '@chakra-ui/react';
-import BookmarkIcon from '@/components/icons/bookmark';
+import BookmarkIcon from '@/components/icons/BookmarkIcon';
 
 interface StationItemProps {
-  item: StationItem;
+  item: TStationItem;
   onClick?: () => void;
 }
 
