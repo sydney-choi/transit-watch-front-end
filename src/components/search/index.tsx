@@ -12,7 +12,7 @@ const SearchInput = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   // const [selectedOption, setSelectedOption] = useState<string>('');
   const debouncedValue = useDebounce(searchText);
-  const options: Array<TStationItem> = [
+  const options: StationItem[] = [
     { stationId: '123', name: '정류장', direction: '을왕리', stationNumber: ['12312'], hasBookmark: false },
     { stationId: '456', name: '정류장1', direction: '을왕리메인거리', stationNumber: ['123178'], hasBookmark: false },
   ];
@@ -21,7 +21,7 @@ const SearchInput = () => {
     setSearchText(e.target.value);
   };
 
-  const handleOptionClick = (option: TStationItem) => {
+  const handleOptionClick = (option: StationItem) => {
     // setSelectedOption(option.stationId);
     setSearchText(option.name);
     setIsDropdownOpen(false);

@@ -2,7 +2,7 @@ import { List } from '@chakra-ui/react';
 import StationItem from './StationItem';
 
 type Props = {
-  items: TStationItem[];
+  items: StationItem[];
 };
 const StationList = ({ items }: Props) => (
   <List>

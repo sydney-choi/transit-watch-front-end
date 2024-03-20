@@ -2,7 +2,7 @@ import { List } from '@chakra-ui/react';
 import BusItem from './BusItem';
 
 type Props = {
-  items: TBusItem[];
+  items: BusItem[];
 };
 const BusList = ({ items }: Props) => (
   <List>

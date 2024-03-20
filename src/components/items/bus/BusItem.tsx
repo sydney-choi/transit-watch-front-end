@@ -2,7 +2,7 @@ import { ListItem, Text, HStack, Box, Flex, Badge, VStack } from '@chakra-ui/rea
 import { convertSecToMinText } from '@/app/_lib/utils';
 import { STATUS_COLOR_KR, STATUS_COLOR } from '@/app/_lib/constant';
 
-const BusItem = ({ item }: { item: TBusItem }) => (
+const BusItem = ({ item }: { item: BusItem }) => (
   <ListItem key={item.busNumber}>
     <HStack boxSizing="border-box" p="0.5rem" h="100%" w="100%">
       <Box w="30%" whiteSpace="wrap">

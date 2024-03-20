@@ -1,5 +1,5 @@
 declare global {
-  type TStationItem = {
+  type StationItem = {
     stationId: string;
     name: string;
     direction: string;
@@ -7,7 +7,7 @@ declare global {
     hasBookmark: boolean;
   };
 
-  type TBusItem = {
+  type BusItem = {
     busNumber: string;
     direction: string;
     firstArrivalTime: string;

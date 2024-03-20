@@ -5,12 +5,12 @@ import { Box, List } from '@chakra-ui/react';
 import StationItem from '@/components/items/station/StationItem';
 
 interface DropdownProps {
-  options: TStationItem[];
-  onSelect?: (option: TStationItem) => void;
+  options: StationItem[];
+  onSelect?: (option: StationItem) => void;
 }
 
 const Dropdown = forwardRef<HTMLDivElement | null, DropdownProps>(({ options, onSelect }, ref) => {
-  const handleOptionClick = (option: TStationItem) => {
+  const handleOptionClick = (option: StationItem) => {
     onSelect?.(option);
   };
   return (
