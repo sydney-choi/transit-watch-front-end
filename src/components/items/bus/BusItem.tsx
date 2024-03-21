@@ -1,6 +1,6 @@
 import { ListItem, Text, HStack, Box, Flex, Badge, VStack } from '@chakra-ui/react';
-import { convertSecToMinText } from '@/app/_lib/utils';
-import { STATUS_COLOR_KR, STATUS_COLOR } from '@/app/_lib/constant';
+import { convertSecToMinText } from '@/lib/utils';
+import { STATUS_COLOR_KR, STATUS_COLOR } from '@/lib/constant';
 
 const BusItem = ({ item }: { item: BusItem }) => (
   <ListItem key={item.busNumber}>
