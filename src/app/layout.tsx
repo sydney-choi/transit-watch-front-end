@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
-import UIProvider from '@/components/provider/UIProvider';
 import { Inter } from 'next/font/google';
+import UIProvider from '@/components/provider/UIProvider';
 import MSWInit from '@/components/MSWInit';
+import DataProvider from '@/components/provider/DataProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,7 +22,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="en">
     <body className={inter.className}>
       <MSWInit />
-      <UIProvider>{children}</UIProvider>
+      <UIProvider>
+        <DataProvider>{children}</DataProvider>
+      </UIProvider>
     </body>
   </html>
 );
