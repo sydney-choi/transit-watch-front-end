@@ -16,6 +16,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/require-default-props': 'off',
+    'import/no-extraneous-dependencies': 0,
     'react/function-component-definition': [
       2,
       {

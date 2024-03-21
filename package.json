@@ -55,5 +55,10 @@
     "prettier": "^3.2.5",
     "storybook": "^7.6.17",
     "typescript": "^5"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
