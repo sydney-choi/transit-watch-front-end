@@ -6,16 +6,14 @@ import useDebounce from '@/hooks/useDebounce';
 import useOutsideClick from '@/hooks/useOutsideClick';
 import SearchIcon from '@/components/icons/SearchIcon';
 import Dropdown from '@/components/search/Dropdown';
+import { useSearchStations } from '@/hooks/useGetQueries';
 
 const SearchBox = () => {
   const [searchText, setSearchText] = useState<string>('');
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   // const [selectedOption, setSelectedOption] = useState<string>('');
   const debouncedValue = useDebounce(searchText);
-  const options: StationItem[] = [
-    { stationId: '123', name: '정류장', direction: '을왕리', stationNumber: ['12312'], hasBookmark: false },
-    { stationId: '456', name: '정류장1', direction: '을왕리메인거리', stationNumber: ['123178'], hasBookmark: false },
-  ];
+  const { data: searchData } = useSearchStations(debouncedValue);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
@@ -59,7 +57,7 @@ const SearchBox = () => {
           boxShadow="0 2px 1px 0 rgba(0,0,0,.15)"
         />
       </InputGroup>
-      {isDropdownOpen && <Dropdown ref={ref} options={options} onSelect={handleOptionClick} />}
+      {isDropdownOpen && searchData && <Dropdown ref={ref} options={searchData} onSelect={handleOptionClick} />}
     </Box>
   );
 };

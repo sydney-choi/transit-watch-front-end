@@ -20,8 +20,9 @@ const stations = [
 
 export const handlers = [
   http.get('/api/stations', ({ request }) => {
-    const param = request.url.search('q');
-    const regex = new RegExp(`[${param}]`, 'g');
+    const url = new URL(request.url);
+    const query = url.searchParams.get('q');
+    const regex = new RegExp(`^${query}`);
     const filteredStatons = stations.filter((item) => item.name.match(regex));
 
     return HttpResponse.json(filteredStatons);
