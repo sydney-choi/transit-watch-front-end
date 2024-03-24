@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Input, InputGroup, InputLeftElement, Box } from '@chakra-ui/react';
+import { Station } from '@/types/common';
 import useDebounce from '@/hooks/useDebounce';
 import useOutsideClick from '@/hooks/useOutsideClick';
 import SearchIcon from '@/components/icons/SearchIcon';
@@ -19,9 +20,9 @@ const SearchBox = () => {
     setSearchText(e.target.value);
   };
 
-  const handleOptionClick = (option: StationItem) => {
+  const handleOptionClick = (option: Station) => {
     // setSelectedOption(option.stationId);
-    setSearchText(option.name);
+    setSearchText(option.stationName);
     setIsDropdownOpen(false);
   };
 

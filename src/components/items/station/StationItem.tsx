@@ -34,10 +34,10 @@ const StationItem = ({ type, item, onClick }: StationItemProps) => {
         {isBookmark && <BookMarkButton onClick={handleBookmark} />}
         <Box ml="0.5rem">
           <Text fontSize="20px" fontWeight="bold">
-            {item.name}
+            {item.stationName}
           </Text>
           <Text fontSize="14px" color="grey">
-            {item.direction}방향({item.stationNumber})
+            {item.nextStationName}방향({item.arsId})
           </Text>
         </Box>
       </HStack>

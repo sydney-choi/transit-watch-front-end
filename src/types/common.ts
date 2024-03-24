@@ -1,8 +1,8 @@
 export type Station = {
   stationId: string;
-  name: string;
-  direction: string;
-  stationNumber: string[];
+  stationName: string;
+  nextStationName: string;
+  arsId: string[];
 };
 
 export type Bus = {
