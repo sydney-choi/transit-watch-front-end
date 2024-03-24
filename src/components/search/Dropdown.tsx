@@ -2,15 +2,16 @@
 
 import { forwardRef } from 'react';
 import { Box, List } from '@chakra-ui/react';
+import { Station } from '@/types/common';
 import StationItem from '@/components/items/station/StationItem';
 
 interface DropdownProps {
-  options: StationItem[];
-  onSelect?: (option: StationItem) => void;
+  options: Station[];
+  onSelect?: (option: Station) => void;
 }
 
 const Dropdown = forwardRef<HTMLDivElement | null, DropdownProps>(({ options, onSelect }, ref) => {
-  const handleOptionClick = (option: StationItem) => {
+  const handleOptionClick = (option: Station) => {
     onSelect?.(option);
   };
   return (
@@ -31,6 +32,7 @@ const Dropdown = forwardRef<HTMLDivElement | null, DropdownProps>(({ options, on
         {options.map((option) => (
           <StationItem
             key={option.stationId}
+            type="search"
             item={option}
             onClick={
               onSelect

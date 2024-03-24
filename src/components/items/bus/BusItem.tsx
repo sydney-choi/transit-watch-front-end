@@ -1,8 +1,9 @@
 import { ListItem, Text, HStack, Box, Flex, Badge, VStack } from '@chakra-ui/react';
+import { Bus } from '@/types/common';
 import { convertSecToMinText } from '@/lib/utils';
 import { STATUS_COLOR_KR, STATUS_COLOR } from '@/lib/constant';
 
-const BusItem = ({ item }: { item: BusItem }) => (
+const BusItem = ({ item }: { item: Bus }) => (
   <ListItem key={item.busNumber}>
     <HStack boxSizing="border-box" p="0.5rem" h="100%" w="100%">
       <Box w="30%" whiteSpace="wrap">

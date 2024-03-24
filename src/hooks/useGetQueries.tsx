@@ -1,10 +1,10 @@
-import client from '@/lib/fetcher';
 import { useQuery } from '@tanstack/react-query';
+import client from '@/lib/fetcher';
+import { Station } from '@/types/common';
 
 export const useSearchStations = (searchText: string = '') =>
-  useQuery<StationItem[]>({
-    queryKey: ['search', searchText],
+  useQuery<Station[]>({
+    queryKey: ['searchStations', searchText],
     queryFn: async () => (await client.get(`/stations?q=${searchText}`)).data,
-    staleTime: 1000 * 60,
     enabled: !!searchText.length,
   });
