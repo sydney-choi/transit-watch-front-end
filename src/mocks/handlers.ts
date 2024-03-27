@@ -14,6 +14,18 @@ const stations = [
     arsId: ['00002', '4213'],
   },
   { stationId: '3', stationName: '역명3', nextStationName: '광화문역', arsId: ['00003'] },
+  { stationId: '4', stationName: '역명4', nextStationName: '광화문역', arsId: ['00003'] },
+  { stationId: '5', stationName: '역명5', nextStationName: '광화문역', arsId: ['00003'] },
+  { stationId: '6', stationName: '역명6', nextStationName: '광화문역', arsId: ['00003'] },
+  { stationId: '7', stationName: '역명7', nextStationName: '광화문역', arsId: ['00003'] },
+  { stationId: '8', stationName: '역명8', nextStationName: '광화문역', arsId: ['00003'] },
+  { stationId: '9', stationName: '역명9', nextStationName: '광화문역', arsId: ['00003'] },
+  { stationId: '10', stationName: '역명10', nextStationName: '광화문역', arsId: ['00003'] },
+  { stationId: '11', stationName: '역명11', nextStationName: '광화문역', arsId: ['00003'] },
+  { stationId: '12', stationName: '역명12', nextStationName: '광화문역', arsId: ['00003'] },
+  { stationId: '13', stationName: '역명13', nextStationName: '광화문역', arsId: ['00003'] },
+  { stationId: '14', stationName: '역명14', nextStationName: '광화문역', arsId: ['00003'] },
+  { stationId: '15', stationName: '역명15', nextStationName: '광화문역', arsId: ['00003'] },
 ];
 
 export const handlers = [
