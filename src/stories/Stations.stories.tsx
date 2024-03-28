@@ -1,6 +1,6 @@
 import React from 'react';
 import { List } from '@chakra-ui/react';
-import StationItem from '@/components/items/station/StationItem';
+import { StationItem } from '@/components/items/stationItem';
 
 export default {
   title: 'Example/stations',

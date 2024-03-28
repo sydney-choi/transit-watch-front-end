@@ -4,7 +4,7 @@ import { forwardRef, memo } from 'react';
 import { Box } from '@chakra-ui/react';
 import { Station } from '@/types/common';
 import { FixedSizeList as List, ListChildComponentProps, areEqual } from 'react-window';
-import StationItem from '@/components/items/station/StationItem';
+import { StationItem } from '@/components/items/stationItem';
 
 interface DropdownProps {
   options: Station[];
@@ -22,7 +22,7 @@ const Item = memo(({ index, style, data }: ListChildComponentProps) => {
   return <StationItem style={style} type={type} item={option} onClick={() => handleClick(option)} />;
 }, areEqual);
 
-const Dropdown = forwardRef<HTMLDivElement | null, DropdownProps>(({ options, onSelect }, ref) => (
+export const Dropdown = forwardRef<HTMLDivElement | null, DropdownProps>(({ options, onSelect }, ref) => (
   <Box
     position="absolute"
     top="100%"
@@ -47,5 +47,3 @@ const Dropdown = forwardRef<HTMLDivElement | null, DropdownProps>(({ options, on
     </List>
   </Box>
 ));
-
-export default Dropdown;

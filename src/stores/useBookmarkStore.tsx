@@ -8,7 +8,7 @@ interface BookmarkState {
   deleteBookmark: (id: string) => void;
 }
 
-const useBookmarksStore = create(
+export const useBookmarksStore = create(
   persist<BookmarkState>(
     (set) => ({
       bookmarks: [
@@ -39,5 +39,3 @@ const useBookmarksStore = create(
     },
   ),
 );
-
-export default useBookmarksStore;

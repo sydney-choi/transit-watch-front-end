@@ -3,13 +3,13 @@
 import { useState, useEffect } from 'react';
 import { Input, InputGroup, InputLeftElement, Box } from '@chakra-ui/react';
 import { Station } from '@/types/common';
-import useDebounce from '@/hooks/useDebounce';
-import useOutsideClick from '@/hooks/useOutsideClick';
-import SearchIcon from '@/components/icons/SearchIcon';
-import Dropdown from '@/components/search/Dropdown';
+import { useDebounce } from '@/hooks/useDebounce';
 import { useSearchStations } from '@/hooks/useGetQueries';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { SearchIcon } from '@/components/icons';
+import { Dropdown } from '@/components/search/Dropdown';
 
-const SearchBox = () => {
+export const SearchBox = () => {
   const [searchText, setSearchText] = useState<string>('');
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   // const [selectedOption, setSelectedOption] = useState<string>('');
@@ -62,5 +62,3 @@ const SearchBox = () => {
     </Box>
   );
 };
-
-export default SearchBox;

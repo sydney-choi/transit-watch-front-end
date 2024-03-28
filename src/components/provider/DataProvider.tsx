@@ -7,7 +7,7 @@ interface DataProviderProps {
   children: React.ReactNode;
 }
 
-const DataProvider = ({ children }: DataProviderProps) => {
+export const DataProvider = ({ children }: DataProviderProps) => {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
@@ -16,5 +16,3 @@ const DataProvider = ({ children }: DataProviderProps) => {
     </QueryClientProvider>
   );
 };
-
-export default DataProvider;

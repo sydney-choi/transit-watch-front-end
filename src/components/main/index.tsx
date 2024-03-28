@@ -1,12 +1,12 @@
 'use client';
 
 import { Badge, Box, Flex, Stack, Text, Heading, List } from '@chakra-ui/react';
-import MainIcon from '@/components/icons/MainIcon';
-import SearchBox from '@/components/search';
-import StationItem from '@/components/items/station/StationItem';
-import useBookmarksStore from '@/stores/useBookmarkStore';
+import { useBookmarksStore } from '@/stores/useBookmarkStore';
+import { MainIcon } from '@/components/icons';
+import { SearchBox } from '@/components/search';
+import { StationItem } from '@/components/items/stationItem';
 
-const Main = () => {
+export const Main = () => {
   const bookmarks = useBookmarksStore((state) => state.bookmarks);
 
   return (
@@ -27,7 +27,13 @@ const Main = () => {
           {bookmarks.length > 0 ? (
             <List>
               {bookmarks.map((bookmark) => (
-                <StationItem key={bookmark.stationId} type="bookmark" item={bookmark} onClick={undefined} />
+                <StationItem
+                  key={bookmark.stationId}
+                  type="bookmark"
+                  item={bookmark}
+                  style={undefined}
+                  onClick={undefined}
+                />
               ))}
             </List>
           ) : (
@@ -51,5 +57,3 @@ const Main = () => {
     </Stack>
   );
 };
-
-export default Main;

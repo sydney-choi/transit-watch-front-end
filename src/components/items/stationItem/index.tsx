@@ -2,18 +2,18 @@
 
 import { CSSProperties } from 'react';
 import { Text, HStack, Box } from '@chakra-ui/react';
+import { useBookmarksStore } from '@/stores/useBookmarkStore';
 import { Station, UIType } from '@/types/common';
-import BookMarkButton from '@/components/common/button/BookmarkButton';
-import useBookmarksStore from '@/stores/useBookmarkStore';
+import { BookmarkButton } from '@/components/common/buttons/bookmark';
 
 interface StationItemProps {
   item: Station;
   type: UIType;
-  style: CSSProperties;
+  style?: CSSProperties;
   onClick?: () => void;
 }
 
-const StationItem = ({ type, style, item, onClick }: StationItemProps) => {
+export const StationItem = ({ type, style, item, onClick }: StationItemProps) => {
   const { deleteBookmark } = useBookmarksStore();
   const isBookmark = type === 'bookmark';
 
@@ -33,7 +33,7 @@ const StationItem = ({ type, style, item, onClick }: StationItemProps) => {
       _hover={isBookmark ? { bgColor: 'inherit' } : { bgColor: '#e6e6e6' }}
       onClick={onClick}
     >
-      {isBookmark && <BookMarkButton onClick={handleBookmark} />}
+      {isBookmark && <BookmarkButton onClick={handleBookmark} />}
       <Box ml="0.5rem">
         <Text fontSize="20px" fontWeight="bold">
           {item.stationName}
@@ -45,5 +45,3 @@ const StationItem = ({ type, style, item, onClick }: StationItemProps) => {
     </HStack>
   );
 };
-
-export default StationItem;

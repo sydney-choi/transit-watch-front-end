@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-const MSWInit = () => {
+export const MSWInit = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
@@ -16,5 +16,3 @@ const MSWInit = () => {
 
   return null;
 };
-
-export default MSWInit;

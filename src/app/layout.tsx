@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
-import UIProvider from '@/components/provider/UIProvider';
-import MSWInit from '@/components/MSWInit';
-import DataProvider from '@/components/provider/DataProvider';
+import { UIProvider, DataProvider } from '@/components/provider';
+import { MSWInit } from '@/components/MSWInit';
 
 const inter = Inter({ subsets: ['latin'] });
 

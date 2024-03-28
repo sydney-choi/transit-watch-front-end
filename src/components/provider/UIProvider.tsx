@@ -6,6 +6,4 @@ interface UIProviderProps {
   children: React.ReactNode;
 }
 
-const UIProvider = ({ children }: UIProviderProps) => <ChakraProvider resetCSS>{children}</ChakraProvider>;
-
-export default UIProvider;
+export const UIProvider = ({ children }: UIProviderProps) => <ChakraProvider resetCSS>{children}</ChakraProvider>;
