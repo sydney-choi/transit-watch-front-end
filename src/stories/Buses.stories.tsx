@@ -1,6 +1,6 @@
 import React from 'react';
 import { List } from '@chakra-ui/react';
-import BusItem from '@/components/items/bus/BusItem';
+import { BusItem } from '@/components/items/busItem';
 
 export default {
   title: 'Example/buses',

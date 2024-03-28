@@ -1,18 +1,13 @@
-import { Badge, Box, Flex, Stack, Text, Heading, List } from '@chakra-ui/react';
-import MainIcon from '@/components/icons/MainIcon';
-import SearchBox from '@/components/search';
-import StationItem from '@/components/items/station/StationItem';
+'use client';
 
-const Main = () => {
-  const options = [
-    {
-      stationId: '12345',
-      name: '네이버정문',
-      direction: '을왕리',
-      stationNumber: ['12312', '23423'],
-      hasBookmark: true,
-    },
-  ];
+import { Badge, Box, Flex, Stack, Text, Heading, List } from '@chakra-ui/react';
+import { useBookmarksStore } from '@/stores/useBookmarkStore';
+import { MainIcon } from '@/components/icons';
+import { SearchBox } from '@/components/search';
+import { StationItem } from '@/components/items/stationItem';
+
+export const Main = () => {
+  const bookmarks = useBookmarksStore((state) => state.bookmarks);
 
   return (
     <Stack backgroundColor="white" w="100%" h="100%">
@@ -29,10 +24,16 @@ const Main = () => {
           즐겨찾는 정류장
         </Heading>
         <Box minH="120px" border="1px solid gray" borderRadius="5px">
-          {options ? (
+          {bookmarks.length > 0 ? (
             <List>
-              {options.map((option) => (
-                <StationItem key={option.stationId} item={option} onClick={undefined} />
+              {bookmarks.map((bookmark) => (
+                <StationItem
+                  key={bookmark.stationId}
+                  type="bookmark"
+                  item={bookmark}
+                  style={undefined}
+                  onClick={undefined}
+                />
               ))}
             </List>
           ) : (
@@ -56,5 +57,3 @@ const Main = () => {
     </Stack>
   );
 };
-
-export default Main;
