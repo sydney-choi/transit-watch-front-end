@@ -14,6 +14,4 @@ export const useMSWInit = () => {
       }
     }
   }, []);
-
-  return null;
 };
