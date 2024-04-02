@@ -5,12 +5,12 @@ import { AspectRatio } from '@chakra-ui/react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { useFindMyLocation } from '@/hooks/useFindMyLocation';
 import { useGetStationsNearby } from '@/hooks/useGetQueries';
-import { ICoordinates } from '@/types/location';
+import { Coordinates } from '@/types/location';
 import { DEFAULT_LAT, DEFAULT_LNG, DEFAULT_RADIUS } from '@/constants/location';
 import { GetStationsNearbyRequest } from '@/types/common';
 
 export const MapContainer = () => {
-  const [coordinates, setCoordinates] = useState<ICoordinates>({
+  const [coordinates, setCoordinates] = useState<Coordinates>({
     lat: DEFAULT_LAT,
     lng: DEFAULT_LNG,
   });
