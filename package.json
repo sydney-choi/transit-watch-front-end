@@ -23,10 +23,17 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
+    "@svgr/webpack": "^8.1.0",
+    "@tanstack/react-query": "^5.28.6",
+    "@tanstack/react-query-devtools": "^5.28.6",
+    "@types/react-window": "^1.8.8",
+    "axios": "^1.6.8",
     "framer-motion": "^11.0.8",
     "next": "14.1.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-window": "^1.8.10",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@chakra-ui/storybook-addon": "^5.1.0",
@@ -38,6 +45,7 @@
     "@storybook/nextjs": "^7.6.17",
     "@storybook/react": "^7.6.17",
     "@storybook/test": "^7.6.17",
+    "@tanstack/eslint-plugin-query": "^5.28.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -55,5 +63,10 @@
     "prettier": "^3.2.5",
     "storybook": "^7.6.17",
     "typescript": "^5"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
