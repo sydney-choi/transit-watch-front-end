@@ -37,4 +37,30 @@ export const handlers = [
 
     return HttpResponse.json(filteredStatons);
   }),
+  http.get('/api/v1/bus-stops/near', () => {
+    const response = {
+      success: true,
+      result: [
+        {
+          stationId: '1',
+          stationName: '시청앞.덕수궁',
+          arsId: '03737',
+          distance: '삼성본관앞',
+          crowding: 'EASYGOING',
+          xlatitude: 37.56626075329715,
+          ylongitude: 126.9769149575052,
+        },
+        {
+          stationId: '2',
+          stationName: '서울광장',
+          arsId: '03733',
+          distance: '을지로입구.로얄호텔',
+          crowding: 'EASYGOING',
+          xlatitude: 37.565274516137386,
+          ylongitude: 126.97879984574396,
+        },
+      ],
+    };
+    return HttpResponse.json(response);
+  }),
 ];

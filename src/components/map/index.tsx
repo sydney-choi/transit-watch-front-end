@@ -1,10 +1,71 @@
-import { AspectRatio } from '@chakra-ui/react';
+'use client';
 
-export const MapContainer = () => (
-  <AspectRatio ratio={16 / 9}>
-    <iframe
-      title="map example"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng"
-    />
-  </AspectRatio>
-);
+import { Suspense, useEffect, useState } from 'react';
+import { AspectRatio } from '@chakra-ui/react';
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import { useFindMyLocation } from '@/hooks/useFindMyLocation';
+import { useGetStationsNearby } from '@/hooks/useGetQueries';
+import { ICoordinates } from '@/types/location';
+import { DEFAULT_LAT, DEFAULT_LNG, DEFAULT_RADIUS } from '@/constants/location';
+import { GetStationsNearbyRequest } from '@/types/common';
+
+export const MapContainer = () => {
+  const [coordinates, setCoordinates] = useState<ICoordinates>({
+    lat: DEFAULT_LAT,
+    lng: DEFAULT_LNG,
+  });
+  // 위치정보 허용했을 때
+  // {"loaded":true,"coordinates":{"lat":35.1709466,"lng":126.9080878}}
+  // 허용 안했을 때
+  // {"loaded":true,"error":{}}
+  const location = useFindMyLocation();
+  useEffect(() => {
+    if (location.coordinates) {
+      const { lat, lng } = location.coordinates;
+      setCoordinates({
+        lat,
+        lng,
+      });
+    } else {
+      setCoordinates({
+        lat: DEFAULT_LAT,
+        lng: DEFAULT_LNG,
+      });
+    }
+  }, [location]);
+
+  const request: GetStationsNearbyRequest = {
+    xlatitude: coordinates.lat,
+    ylongitude: coordinates.lng,
+    radius: DEFAULT_RADIUS,
+  };
+  const { data } = useGetStationsNearby(request);
+
+  return (
+    <AspectRatio ratio={16 / 9}>
+      <Suspense fallback={<p>로딩중..</p>}>
+        {location.loaded && data && (
+          <Map center={coordinates} isPanto style={{ width: '100%', height: '100%' }} level={4}>
+            {data.result.map((item) => {
+              const { stationId, xlatitude, ylongitude, stationName } = item;
+              return (
+                <MapMarker
+                  key={stationId}
+                  position={{ lat: xlatitude, lng: ylongitude }} // 마커를 표시할 위치
+                  image={{
+                    src: 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png', // 마커이미지의 주소입니다
+                    size: {
+                      width: 24,
+                      height: 35,
+                    }, // 마커이미지의 크기입니다
+                  }}
+                  title={stationName} // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                />
+              );
+            })}
+          </Map>
+        )}
+      </Suspense>
+    </AspectRatio>
+  );
+};
