@@ -1,22 +1,23 @@
-import { STATUS_COLOR_KR } from '@/lib/constant';
-
 export interface Station {
-  stationId: string;
+  arsId: string;
   stationName: string;
   nextStationName: string;
-  arsId: string[];
-  crowding?: typeof STATUS_COLOR_KR;
+  crowding: string;
   xlatitude: number;
   ylongitude: number;
 }
 
 export interface Bus {
-  busNumber: string;
+  busId: string;
+  busName: string;
+  busOrder: number;
   direction: string;
-  firstArrivalBusTime: string;
-  secondArrivalBusTime: string;
+  firstArrivalBusTime: number;
+  secondArrivalBusTime: number;
   firstArrivalBusCrowding: string;
   secondArrivalBusCrowding: string;
+  firstArrivalTimeBefore: string;
+  secondArrivalTimeBefore: string;
 }
 
 export interface GetStationsNearbyRequest {
@@ -28,6 +29,11 @@ export interface GetStationsNearbyRequest {
 export interface GetStationsNearbyResponse {
   success: boolean;
   result: Station[];
+}
+
+export interface GetStationDetailResponse {
+  success: boolean;
+  result: StationDetail;
 }
 
 export interface StationDetail {

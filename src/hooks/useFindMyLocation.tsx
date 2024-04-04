@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { ILocation } from '@/types/location';
+import { Location } from '@/types/location';
 
 export const useFindMyLocation = () => {
-  const [location, setLocation] = useState<ILocation>({
+  const [location, setLocation] = useState<Location>({
     loaded: false,
     coordinates: { lat: 0, lng: 0 },
   });
