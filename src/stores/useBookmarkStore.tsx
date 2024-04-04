@@ -13,25 +13,36 @@ export const useBookmarksStore = create(
     (set) => ({
       bookmarks: [
         {
-          stationId: '1',
+          arsId: '00001',
           stationName: '경기도인재개발원.연구원.평생교육진흥원.여성가족재단',
           nextStationName: '용산우체국',
-          arsId: ['00001'],
+          crowding: 'EASYGOING',
+          xlatitude: 33.450701,
+          ylongitude: 126.570667,
         },
         {
-          stationId: '2',
+          arsId: '00002',
           stationName: '역명2',
           nextStationName: '종로2가사거리',
-          arsId: ['00002', '4213'],
+          crowding: 'EASYGOING',
+          xlatitude: 37.499590490909185,
+          ylongitude: 127.0263723554437,
         },
-        { stationId: '3', stationName: '역명3', nextStationName: '광화문역', arsId: ['00003'] },
+        {
+          arsId: '00003',
+          stationName: '역명3',
+          nextStationName: '광화문역',
+          crowding: 'EASYGOING',
+          xlatitude: 37.499590490909185,
+          ylongitude: 127.0263723554437,
+        },
       ],
 
       addBookmark: (bookmark) => set((state) => ({ bookmarks: [...state.bookmarks, bookmark] })),
 
       deleteBookmark: (id) =>
         set((state) => ({
-          bookmarks: state.bookmarks.filter((bookmark) => bookmark.stationId !== id),
+          bookmarks: state.bookmarks.filter((bookmark) => bookmark.arsId !== id),
         })),
     }),
     {

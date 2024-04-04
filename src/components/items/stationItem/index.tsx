@@ -19,7 +19,7 @@ export const StationItem = ({ type, style, item, onClick }: StationItemProps) =>
 
   const handleBookmark = () => {
     // todo: localstorage -> server optimistic update
-    deleteBookmark(item.stationId);
+    deleteBookmark(item.arsId);
   };
 
   return (

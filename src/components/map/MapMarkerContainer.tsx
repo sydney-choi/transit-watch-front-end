@@ -23,7 +23,7 @@ export const MapMarkerContainer = ({ position, item }: MapMarkerContainerProps) 
 
   return (
     <MapMarker position={position} onClick={handleOnClick}>
-      {isOpen && data && <StationCard key={item.arsId} item={data.result} />}
+      {isOpen && data && <StationCard item={data.result} />}
     </MapMarker>
   );
 };

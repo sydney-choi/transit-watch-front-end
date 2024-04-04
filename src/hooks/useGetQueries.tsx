@@ -22,9 +22,9 @@ export const useGetStationsNearby = (request: GetStationsNearbyRequest) =>
     staleTime: Infinity, // TODO: 임시설정, 배포 전 staleTime 변경하기
   });
 
-export const useGetStationDetail = (stationId: string) =>
+export const useGetStationDetail = (arsId: string) =>
   useQuery<GetStationDetailResponse>({
     queryKey: ['getStationDetail'],
-    queryFn: async () => (await client.get(`/v1/bus-stops/detail/${stationId}`)).data,
+    queryFn: async () => (await client.get(`/v1/bus-stops/detail/${arsId}`)).data,
     staleTime: Infinity,
   });
