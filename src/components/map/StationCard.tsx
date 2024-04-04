@@ -1,6 +1,6 @@
 import { StationDetail } from '@/types/common';
 import { Card, Box, CardBody, Text, List } from '@chakra-ui/react';
-import { STATUS_COLOR, STATUS_COLOR_KR } from '@/lib/constant';
+import { STATUS_COLOR, STATUS_KR } from '@/constants/status';
 import { BusItem } from '@/components/items/busItem';
 
 interface StationCardProps {
@@ -24,7 +24,7 @@ export const StationCard = ({ item }: StationCardProps) => {
             {station.nextStationName}방향
           </Text>
           <Text fontSize="md" fontWeight="bold" color={STATUS_COLOR[station.crowding]}>
-            {STATUS_COLOR_KR[station.crowding]}
+            {STATUS_KR[station.crowding]}
           </Text>
         </Box>
         <Box>
