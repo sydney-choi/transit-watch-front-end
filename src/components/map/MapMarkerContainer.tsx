@@ -3,6 +3,7 @@ import { MapMarker, MapMarkerProps, useMap } from 'react-kakao-maps-sdk';
 import { StationCard } from '@/components/map/StationCard';
 import { useGetStationDetail } from '@/hooks/useGetQueries';
 import { Station } from '@/types/common';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 interface MapMarkerContainerProps {
   position: MapMarkerProps['position'];
@@ -14,6 +15,12 @@ export const MapMarkerContainer = ({ position, item }: MapMarkerContainerProps) 
   const [isOpen, setIsOpen] = useState(false);
   const { data } = useGetStationDetail(item.arsId);
 
+  const handleClickOutside = () => {
+    setIsOpen(false);
+  };
+
+  const ref = useOutsideClick(handleClickOutside);
+
   const handleOnClick = (marker: kakao.maps.Marker) => {
     map.panTo(marker.getPosition());
     if (data) {
@@ -23,7 +30,7 @@ export const MapMarkerContainer = ({ position, item }: MapMarkerContainerProps) 
 
   return (
     <MapMarker position={position} onClick={handleOnClick}>
-      {isOpen && data && <StationCard item={data.result} />}
+      {isOpen && data && <StationCard ref={ref} item={data.result} />}
     </MapMarker>
   );
 };

@@ -58,10 +58,10 @@ export const MapContainer = () => {
   }, [data]);
 
   return (
-    <AspectRatio ratio={16 / 9}>
+    <AspectRatio h="calc(-56px + 100vh)" position="relative" w="100%">
       <Suspense fallback={<p>로딩중..</p>}>
         {location.loaded && stationsNearby && (
-          <Map center={coordinates} isPanto style={{ width: '100%', height: '100%' }} level={4}>
+          <Map center={coordinates} style={{ width: '100%', height: '100%' }} level={4} isPanto>
             {stationsNearby.map((item) => {
               const { xlatitude, ylongitude } = item;
               return (
