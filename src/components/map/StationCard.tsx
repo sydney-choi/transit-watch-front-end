@@ -6,14 +6,15 @@ import { BusItem } from '@/components/items/busItem';
 
 interface StationCardProps {
   item: StationDetail;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const StationCard = forwardRef<HTMLDivElement | null, StationCardProps>(({ item }, ref) => {
+export const StationCard = forwardRef<HTMLDivElement | null, StationCardProps>(({ item, onClick }, ref) => {
   const { station, busList } = item;
 
   return (
     <Box w="100%" maxH="496px" position="relative" ref={ref}>
-      <CloseButton type="button" position="absolute" top={1} right={1} />
+      <CloseButton type="button" position="absolute" top={1} right={1} onClick={onClick} />
       <Box p={3} backgroundColor="#eaeaea" minH={1} textAlign="center">
         <Text color="#616161" fontSize="sm">
           {station.arsId}

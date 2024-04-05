@@ -24,7 +24,7 @@ export const useGetStationsNearby = (request: GetStationsNearbyRequest) =>
 
 export const useGetStationDetail = (arsId: string) =>
   useQuery<GetStationDetailResponse>({
-    queryKey: ['getStationDetail'],
+    queryKey: ['getStationDetail', arsId],
     queryFn: async () => (await client.get(`/v1/bus-stops/detail/${arsId}`)).data,
     staleTime: Infinity,
   });
