@@ -1,18 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Input, InputGroup, InputLeftElement, Box } from '@chakra-ui/react';
 import { Station } from '@/types/common';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useSearchStations } from '@/hooks/useGetQueries';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
-import { SearchIcon } from '@/components/icons';
 import { Dropdown } from '@/components/search/Dropdown';
+import { useStationStore } from '@/stores/useStationStore';
+import { SearchIcon } from '@/components/icons';
 
 export const SearchBox = () => {
   const [searchText, setSearchText] = useState<string>('');
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  // const [selectedOption, setSelectedOption] = useState<string>('');
+  const { setStation } = useStationStore();
   const debouncedValue = useDebounce(searchText);
   const { data: searchData } = useSearchStations(debouncedValue);
 
@@ -21,7 +22,7 @@ export const SearchBox = () => {
   };
 
   const handleOptionClick = (option: Station) => {
-    // setSelectedOption(option.stationId);
+    setStation(option);
     setSearchText(option.stationName);
     setIsDropdownOpen(false);
   };
@@ -35,12 +36,6 @@ export const SearchBox = () => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-
-  useEffect(() => {
-    if (searchText) {
-      // TODO api를 호출합니다
-    }
-  }, [debouncedValue, searchText]);
 
   return (
     <Box position="relative">

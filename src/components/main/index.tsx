@@ -28,7 +28,7 @@ export const Main = () => {
             <List>
               {bookmarks.map((bookmark) => (
                 <StationItem
-                  key={bookmark.stationId}
+                  key={bookmark.arsId}
                   type="bookmark"
                   item={bookmark}
                   style={undefined}

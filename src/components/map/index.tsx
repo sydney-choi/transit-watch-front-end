@@ -1,10 +1,80 @@
-import { AspectRatio } from '@chakra-ui/react';
+'use client';
 
-export const MapContainer = () => (
-  <AspectRatio ratio={16 / 9}>
-    <iframe
-      title="map example"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng"
-    />
-  </AspectRatio>
-);
+import { Suspense, useEffect, useState } from 'react';
+import { AspectRatio } from '@chakra-ui/react';
+import { Map } from 'react-kakao-maps-sdk';
+import { useFindMyLocation } from '@/hooks/useFindMyLocation';
+import { useGetStationsNearby } from '@/hooks/useGetQueries';
+import { Coordinates } from '@/types/location';
+import { DEFAULT_LAT, DEFAULT_LNG, DEFAULT_RADIUS } from '@/constants/location';
+import { GetStationsNearbyRequest, Station } from '@/types/common';
+import { useStationStore } from '@/stores/useStationStore';
+import { MapMarkerContainer } from '@/components/map/MapMarkerContainer';
+
+export const MapContainer = () => {
+  const [coordinates, setCoordinates] = useState<Coordinates>({
+    lat: DEFAULT_LAT,
+    lng: DEFAULT_LNG,
+  });
+  const { station } = useStationStore();
+  const [stationsNearby, setStationsNearby] = useState<Station[]>();
+  const location = useFindMyLocation();
+
+  useEffect(() => {
+    // 위치 정보를 허용한 경우
+    if (location.coordinates) {
+      const { lat, lng } = location.coordinates;
+      setCoordinates({
+        lat,
+        lng,
+      });
+      // 검색창에서 아이템을 선택한 경우
+    } else if (station.arsId) {
+      const { xlatitude, ylongitude } = station;
+      setCoordinates({
+        lat: xlatitude,
+        lng: ylongitude,
+      });
+      // 위치 정보를 허용하지 않은 경우
+    } else {
+      setCoordinates({
+        lat: DEFAULT_LAT,
+        lng: DEFAULT_LNG,
+      });
+    }
+  }, [location, station]);
+
+  const request: GetStationsNearbyRequest = {
+    xlatitude: coordinates.lat,
+    ylongitude: coordinates.lng,
+    radius: DEFAULT_RADIUS,
+  };
+  const { data } = useGetStationsNearby(request);
+
+  useEffect(() => {
+    if (data) {
+      setStationsNearby(data.result);
+    }
+  }, [data]);
+
+  return (
+    <AspectRatio h="calc(-56px + 100vh)" position="relative" w="100%">
+      <Suspense fallback={<p>로딩중..</p>}>
+        {location.loaded && stationsNearby && (
+          <Map center={coordinates} style={{ width: '100%', height: '100%' }} level={4} isPanto>
+            {stationsNearby.map((item) => {
+              const { xlatitude, ylongitude } = item;
+              return (
+                <MapMarkerContainer
+                  key={`${item.xlatitude}-${item.ylongitude}`}
+                  position={{ lat: xlatitude, lng: ylongitude }}
+                  item={item}
+                />
+              );
+            })}
+          </Map>
+        )}
+      </Suspense>
+    </AspectRatio>
+  );
+};

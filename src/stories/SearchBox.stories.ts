@@ -13,8 +13,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     options: [
-      { stationId: '123', name: '정류장', direction: '을왕리', stationNumber: ['12312'] },
-      { stationId: '456', name: '정류장1', direction: '을왕리메인거리', stationNumber: ['123178'] },
+      { arsId: '123', stationName: '정류장', nextStationName: '을왕리', xlatitude: 33.450701, ylongitude: 126.570667 },
+      {
+        arsId: '456',
+        stationName: '정류장1',
+        nextStationName: '을왕리메인거리',
+        xlatitude: 33.450701,
+        ylongitude: 126.570667,
+      },
     ],
   },
 };

@@ -1,17 +1,44 @@
 export interface Station {
-  stationId: string;
+  arsId: string;
   stationName: string;
   nextStationName: string;
-  arsId: string[];
+  crowding: string;
+  xlatitude: number;
+  ylongitude: number;
 }
 
 export interface Bus {
-  busNumber: string;
+  busId: string;
+  busName: string;
+  busOrder: number;
   direction: string;
-  firstArrivalTime: string;
-  secondArrivalTime: string;
+  firstArrivalBusTime: number;
+  secondArrivalBusTime: number;
   firstArrivalBusCrowding: string;
   secondArrivalBusCrowding: string;
+  firstArrivalTimeBefore: string;
+  secondArrivalTimeBefore: string;
+}
+
+export interface GetStationsNearbyRequest {
+  xlatitude: number;
+  ylongitude: number;
+  radius: number;
+}
+
+export interface GetStationsNearbyResponse {
+  success: boolean;
+  result: Station[];
+}
+
+export interface GetStationDetailResponse {
+  success: boolean;
+  result: StationDetail;
+}
+
+export interface StationDetail {
+  station: Station;
+  busList: Bus[];
 }
 
 export type UIType = 'search' | 'bookmark';

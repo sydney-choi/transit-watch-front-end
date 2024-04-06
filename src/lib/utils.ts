@@ -1,7 +1,6 @@
-export const convertSecToMinText = (target: string) => {
+export const convertSecToMinText = (target: number) => {
   const ONE_MINUTE = 1;
-  const targetSeconds = parseInt(target, 10);
-  const targetMinute = Math.trunc(targetSeconds / 60);
+  const targetMinute = Math.trunc(target / 60);
   let elapsedText = '';
 
   if (targetMinute < ONE_MINUTE) {
