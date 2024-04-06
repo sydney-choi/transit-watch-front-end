@@ -29,7 +29,7 @@ export const MapMarkerContainer = ({ position, item }: MapMarkerContainerProps) 
 
   const ref = useOutsideClick(handleClickOutside);
 
-  const handleOnClick = (marker: kakao.maps.Marker) => {
+  const handleMarkerClick = (marker: kakao.maps.Marker) => {
     map.panTo(marker.getPosition());
     if (data) {
       setIsOpen(true);
@@ -37,7 +37,7 @@ export const MapMarkerContainer = ({ position, item }: MapMarkerContainerProps) 
   };
 
   return (
-    <MapMarker position={position} onClick={handleOnClick}>
+    <MapMarker position={position} onClick={handleMarkerClick}>
       {isOpen && data && <StationCard ref={ref} item={data.result} onClick={() => setIsOpen(false)} />}
     </MapMarker>
   );

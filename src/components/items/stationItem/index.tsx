@@ -17,7 +17,7 @@ export const StationItem = ({ type, style, item, onClick }: StationItemProps) =>
   const { deleteBookmark } = useBookmarksStore();
   const isBookmark = type === 'bookmark';
 
-  const handleBookmark = () => {
+  const handleBookmarkClick = () => {
     // todo: localstorage -> server optimistic update
     deleteBookmark(item.arsId);
   };
@@ -33,7 +33,7 @@ export const StationItem = ({ type, style, item, onClick }: StationItemProps) =>
       _hover={isBookmark ? { bgColor: 'inherit' } : { bgColor: '#e6e6e6' }}
       onClick={onClick}
     >
-      {isBookmark && <BookmarkButton onClick={handleBookmark} />}
+      {isBookmark && <BookmarkButton onClick={handleBookmarkClick} isSavedBookmark />}
       <Box ml="0.5rem">
         <Text fontSize="20px" fontWeight="bold">
           {item.stationName}

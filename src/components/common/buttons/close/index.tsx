@@ -1,8 +1,8 @@
 import { CloseIcon } from '@/components/icons';
 
-type CloseButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
+interface CloseButtonProps {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-};
+}
 
 export const CloseButton = ({ onClick }: CloseButtonProps) => (
   <button type="button" onClick={onClick}>
