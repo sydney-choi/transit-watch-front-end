@@ -3,7 +3,7 @@ import { CSSProperties } from 'react';
 
 interface CloseButtonProps {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  style: CSSProperties;
+  style?: CSSProperties;
 }
 
 export const CloseButton = ({ style, onClick }: CloseButtonProps) => (

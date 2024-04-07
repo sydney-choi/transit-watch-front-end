@@ -3,7 +3,7 @@ import { ActiveBookmarkIcon, InactiveBookmarkIcon } from '@/components/icons';
 
 interface BookmarkButtonProps {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  style: CSSProperties;
+  style?: CSSProperties;
   isSavedBookmark: boolean;
 }
 
