@@ -27,7 +27,7 @@ export const StationItem = ({ type, style, item, onClick }: StationItemProps) =>
       style={style}
       boxSizing="border-box"
       p="0.5rem"
-      cursor={isBookmark ? 'default' : 'pointer'}
+      cursor="pointer"
       gap={0}
       w="100%"
       _hover={isBookmark ? { bgColor: 'inherit' } : { bgColor: '#e6e6e6' }}
