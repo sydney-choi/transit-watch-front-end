@@ -2,12 +2,18 @@
 
 import { Badge, Box, Flex, Stack, Text, Heading, List } from '@chakra-ui/react';
 import { useBookmarksStore } from '@/stores/useBookmarkStore';
+import { Station } from '@/types/common';
 import { MainIcon } from '@/components/icons';
 import { SearchBox } from '@/components/search';
 import { StationItem } from '@/components/items/stationItem';
+import { useStationStore } from '@/stores/useStationStore';
 
 export const Main = () => {
   const bookmarks = useBookmarksStore((state) => state.bookmarks);
+  const { setStation } = useStationStore();
+  const handleItemClick = (target: Station) => {
+    setStation(target);
+  };
 
   return (
     <Stack backgroundColor="white" w="100%" h="100%">
@@ -31,8 +37,7 @@ export const Main = () => {
                   key={bookmark.arsId}
                   type="bookmark"
                   item={bookmark}
-                  style={undefined}
-                  onClick={undefined}
+                  onClick={() => handleItemClick(bookmark)}
                 />
               ))}
             </List>

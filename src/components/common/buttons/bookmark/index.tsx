@@ -1,11 +1,18 @@
-import { ActiveBookmarkIcon } from '@/components/icons';
+import { CSSProperties } from 'react';
+import { ActiveBookmarkIcon, InactiveBookmarkIcon } from '@/components/icons';
 
-type BookmarkButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
+interface BookmarkButtonProps {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-};
+  style?: CSSProperties;
+  isSavedBookmark: boolean;
+}
 
-export const BookmarkButton = ({ onClick }: BookmarkButtonProps) => (
-  <button type="button" onClick={onClick}>
-    <ActiveBookmarkIcon alt="bookmark" sizes="100vw" />
+export const BookmarkButton = ({ onClick, style, isSavedBookmark }: BookmarkButtonProps) => (
+  <button type="button" style={style} onClick={onClick}>
+    {isSavedBookmark ? (
+      <ActiveBookmarkIcon alt="bookmark" sizes="100vw" />
+    ) : (
+      <InactiveBookmarkIcon alt="bookmark" sizes="100vw" />
+    )}
   </button>
 );
