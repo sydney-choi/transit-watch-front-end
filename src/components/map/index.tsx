@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useState } from 'react';
 import { AspectRatio } from '@chakra-ui/react';
-import { Map } from 'react-kakao-maps-sdk';
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { useFindMyLocation } from '@/hooks/useFindMyLocation';
 import { useGetStationsNearby } from '@/hooks/useGetQueries';
 import { Coordinates } from '@/types/location';
@@ -62,6 +62,18 @@ export const MapContainer = () => {
       <Suspense fallback={<p>로딩중..</p>}>
         {location.loaded && stationsNearby && (
           <Map center={coordinates} style={{ width: '100%', height: '100%' }} level={4} isPanto>
+            {location.coordinates && (
+              <MapMarker
+                position={coordinates}
+                image={{
+                  src: '/RedMarker.png',
+                  size: {
+                    width: 30,
+                    height: 30,
+                  },
+                }}
+              />
+            )}
             {stationsNearby.map((item) => {
               const { xlatitude, ylongitude } = item;
               return (
