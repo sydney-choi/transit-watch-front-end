@@ -40,3 +40,9 @@ export const Default: Story = {
     ],
   },
 };
+
+export const NoData: Story = {
+  args: {
+    options: [],
+  },
+};

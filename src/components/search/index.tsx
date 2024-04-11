@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Input, InputGroup, InputLeftElement, Box } from '@chakra-ui/react';
+import { Input, InputGroup, InputLeftElement, Box, Text } from '@chakra-ui/react';
 import { Station } from '@/types/common';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useSearchStations } from '@/hooks/useGetQueries';
@@ -17,7 +17,7 @@ export const SearchBox = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const { setStation } = useStationStore();
   const debouncedValue = useDebounce(searchText);
-  const { data: searchData } = useSearchStations(debouncedValue);
+  const { data: searchData, isLoading } = useSearchStations(debouncedValue);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
@@ -57,7 +57,13 @@ export const SearchBox = () => {
           _focus={{ boxShadow: 'none' }}
         />
       </InputGroup>
-      {isDropdownOpen && searchData && <Dropdown ref={ref} options={searchData} onSelect={handleOptionClick} />}
+      {isLoading ? (
+        <Box p={2}>
+          <Text>검색중..🔮</Text>
+        </Box>
+      ) : (
+        isDropdownOpen && searchData && <Dropdown ref={ref} options={searchData} onSelect={handleOptionClick} />
+      )}
     </Box>
   );
 };
