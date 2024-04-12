@@ -1,7 +1,7 @@
 'use client';
 
 import { Suspense, useEffect, useState } from 'react';
-import { AspectRatio } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { useFindMyLocation } from '@/hooks/useFindMyLocation';
 import { useGetStationsNearby } from '@/hooks/useGetQueries';
@@ -10,6 +10,7 @@ import { DEFAULT_LAT, DEFAULT_LNG, DEFAULT_RADIUS } from '@/constants/location';
 import { GetStationsNearbyRequest, Station } from '@/types/common';
 import { useStationStore } from '@/stores/useStationStore';
 import { MapMarkerContainer } from '@/components/map/MapMarkerContainer';
+import { ResettingMapBounds } from '@/components/map/ResettingMapBounds';
 
 export const MapContainer = () => {
   const [coordinates, setCoordinates] = useState<Coordinates>({
@@ -58,10 +59,10 @@ export const MapContainer = () => {
   }, [data]);
 
   return (
-    <AspectRatio h="calc(-56px + 100vh)" position="relative" w="100%">
+    <Box h="calc(-56px + 100vh)" w="100%" overflow="hidden">
       <Suspense fallback={<p>로딩중..</p>}>
         {location.loaded && stationsNearby && (
-          <Map center={coordinates} style={{ width: '100%', height: '100%' }} level={4} isPanto>
+          <Map center={coordinates} style={{ position: 'relative', width: '100%', height: '100%' }} level={4} isPanto>
             {location.coordinates && (
               <MapMarker
                 position={coordinates}
@@ -84,9 +85,10 @@ export const MapContainer = () => {
                 />
               );
             })}
+            <ResettingMapBounds points={stationsNearby} />
           </Map>
         )}
       </Suspense>
-    </AspectRatio>
+    </Box>
   );
 };
