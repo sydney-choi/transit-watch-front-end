@@ -58,7 +58,19 @@ export const SearchBox = () => {
         />
       </InputGroup>
       {isLoading ? (
-        <Box p={2}>
+        <Box
+          position="absolute"
+          top="100%"
+          left="0"
+          right="0"
+          zIndex="1"
+          border="1px"
+          borderColor="gray.200"
+          borderRadius="5px"
+          boxShadow="md"
+          bg="white"
+          p={2}
+        >
           <Text>검색중..🔮</Text>
         </Box>
       ) : (
