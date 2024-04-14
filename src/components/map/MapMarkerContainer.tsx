@@ -1,27 +1,24 @@
 import { useEffect, useState } from 'react';
 import { MapMarker, MapMarkerProps, useMap } from 'react-kakao-maps-sdk';
 import { StationCard } from '@/components/map/StationCard';
-import { useGetStationDetail } from '@/hooks/useGetQueries';
-import { Station } from '@/types/common';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { useStationStore } from '@/stores/useStationStore';
 
 interface MapMarkerContainerProps {
   position: MapMarkerProps['position'];
-  item: Station;
+  arsId: string;
 }
 
-export const MapMarkerContainer = ({ position, item }: MapMarkerContainerProps) => {
+export const MapMarkerContainer = ({ position, arsId }: MapMarkerContainerProps) => {
   const map = useMap();
   const [isOpen, setIsOpen] = useState(false);
-  const { data } = useGetStationDetail(item.arsId);
   const { station } = useStationStore();
 
   useEffect(() => {
-    if (station.arsId === item.arsId) {
+    if (station.arsId === arsId) {
       setIsOpen(true);
     }
-  }, [station.arsId, item.arsId]);
+  }, [station.arsId, arsId]);
 
   const handleClickOutside = () => {
     setIsOpen(false);
@@ -31,14 +28,12 @@ export const MapMarkerContainer = ({ position, item }: MapMarkerContainerProps) 
 
   const handleMarkerClick = (marker: kakao.maps.Marker) => {
     map.panTo(marker.getPosition());
-    if (data) {
-      setIsOpen(true);
-    }
+    setIsOpen(true);
   };
 
   return (
     <MapMarker position={position} onClick={handleMarkerClick}>
-      {isOpen && data && <StationCard ref={ref} item={data.result} onClick={() => setIsOpen(false)} />}
+      {isOpen && <StationCard ref={ref} arsId={arsId} onClick={() => setIsOpen(false)} />}
     </MapMarker>
   );
 };

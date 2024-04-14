@@ -76,12 +76,12 @@ export const MapContainer = () => {
               />
             )}
             {stationsNearby.map((item) => {
-              const { xlatitude, ylongitude } = item;
+              const { arsId, xlatitude, ylongitude } = item;
               return (
                 <MapMarkerContainer
                   key={`${item.xlatitude}-${item.ylongitude}`}
                   position={{ lat: xlatitude, lng: ylongitude }}
-                  item={item}
+                  arsId={arsId}
                 />
               );
             })}
