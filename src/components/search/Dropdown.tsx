@@ -1,7 +1,7 @@
 'use client';
 
 import { forwardRef, memo } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import { Station } from '@/types/common';
 import { FixedSizeList as List, ListChildComponentProps, areEqual } from 'react-window';
 import { StationItem } from '@/components/items/stationItem';
@@ -36,14 +36,20 @@ export const Dropdown = forwardRef<HTMLDivElement | null, DropdownProps>(({ opti
     bg="white"
     ref={ref}
   >
-    <List
-      itemSize={80}
-      width={290}
-      height={200}
-      itemData={{ options, type: 'search', onSelect }}
-      itemCount={options.length}
-    >
-      {Item}
-    </List>
+    {options.length === 0 ? (
+      <Box p={2}>
+        <Text>검색 결과가 없어요😔</Text>
+      </Box>
+    ) : (
+      <List
+        itemSize={80}
+        width={290}
+        height={200}
+        itemData={{ options, type: 'search', onSelect }}
+        itemCount={options.length}
+      >
+        {Item}
+      </List>
+    )}
   </Box>
 ));

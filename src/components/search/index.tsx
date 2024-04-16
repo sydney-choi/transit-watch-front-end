@@ -1,21 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { Input, InputGroup, InputLeftElement, Box } from '@chakra-ui/react';
+import { Input, InputGroup, InputLeftElement, Box, Text } from '@chakra-ui/react';
 import { Station } from '@/types/common';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useSearchStations } from '@/hooks/useGetQueries';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { useFocus } from '@/hooks/useFocus';
 import { Dropdown } from '@/components/search/Dropdown';
 import { useStationStore } from '@/stores/useStationStore';
 import { SearchIcon } from '@/components/icons';
 
 export const SearchBox = () => {
   const [searchText, setSearchText] = useState<string>('');
+  const inputRef = useFocus();
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const { setStation } = useStationStore();
   const debouncedValue = useDebounce(searchText);
-  const { data: searchData } = useSearchStations(debouncedValue);
+  const { data: searchData, isLoading } = useSearchStations(debouncedValue);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
@@ -44,6 +46,7 @@ export const SearchBox = () => {
           <SearchIcon />
         </InputLeftElement>
         <Input
+          ref={inputRef}
           type="text"
           placeholder="정류장으로 혼잡도를 검색해요"
           value={searchText}
@@ -51,9 +54,28 @@ export const SearchBox = () => {
           onClick={toggleDropdown}
           bgColor="white"
           boxShadow="0 2px 1px 0 rgba(0,0,0,.15)"
+          _focus={{ boxShadow: 'none' }}
         />
       </InputGroup>
-      {isDropdownOpen && searchData && <Dropdown ref={ref} options={searchData} onSelect={handleOptionClick} />}
+      {isLoading ? (
+        <Box
+          position="absolute"
+          top="100%"
+          left="0"
+          right="0"
+          zIndex="1"
+          border="1px"
+          borderColor="gray.200"
+          borderRadius="5px"
+          boxShadow="md"
+          bg="white"
+          p={2}
+        >
+          <Text>검색중..🔮</Text>
+        </Box>
+      ) : (
+        isDropdownOpen && searchData && <Dropdown ref={ref} options={searchData} onSelect={handleOptionClick} />
+      )}
     </Box>
   );
 };
