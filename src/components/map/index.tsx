@@ -59,7 +59,7 @@ export const MapContainer = () => {
   }, [data]);
 
   return (
-    <Box h="calc(-56px + 100vh)" w="100%" overflow="hidden">
+    <Box h="100vh" w="100%" overflow="hidden">
       <Suspense fallback={<p>로딩중..</p>}>
         {location.loaded && stationsNearby && (
           <Map center={coordinates} style={{ position: 'relative', width: '100%', height: '100%' }} level={4} isPanto>
