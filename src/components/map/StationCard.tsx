@@ -43,7 +43,15 @@ export const StationCard = forwardRef<HTMLDivElement | null, StationCardProps>((
   return (
     !isLoading &&
     isSuccess && (
-      <Box maxH="496px" position="relative" ref={ref} backgroundColor="#fff">
+      <Box
+        position="relative"
+        w="240px"
+        maxH="calc(-4px + 50vh)"
+        transform="translateX(-50%)"
+        ref={ref}
+        backgroundColor="#fff"
+        boxShadow="lg"
+      >
         <CloseButton style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} onClick={onClick} />
         <Box p={3} backgroundColor="#eaeaea" minH={1} textAlign="center">
           <Text color="#616161" fontSize="sm">
@@ -59,17 +67,23 @@ export const StationCard = forwardRef<HTMLDivElement | null, StationCardProps>((
             {STATUS_KR[data.result.station.crowding]}
           </Text>
         </Box>
-        <Flex justifyContent="space-between" alignItems="center" border="solid 1px #eaeaea">
-          <Text align="left" fontWeight="bold" fontSize="md" lineHeight={2}>
+        <Flex
+          justifyContent="space-between"
+          alignItems="center"
+          border="solid 1px #eaeaea"
+          paddingLeft={1}
+          paddingRight={1}
+        >
+          <Text align="left" fontWeight="bold" fontSize="sm" lineHeight={2}>
             실시간 버스 정보
           </Text>
-          <Flex>
+          <Flex alignItems="center">
             {isFetching ? (
-              <Text fontSize="sm" color="#929292">
+              <Text fontSize="sm" color="#929292" marginRight={1}>
                 데이터 갱신중..
               </Text>
             ) : (
-              <Text fontSize="sm" color="#929292">
+              <Text fontSize="sm" color="#929292" marginRight={1}>
                 {currentTime}
               </Text>
             )}
@@ -82,7 +96,7 @@ export const StationCard = forwardRef<HTMLDivElement | null, StationCardProps>((
             onClick={handleBookmarkClick}
             isSavedBookmark={isSavedbookmark}
           />
-          <Box maxH="300px" overflowY="auto">
+          <Box maxH="230px" overflowY="auto">
             {data.result.busList.map((bus) => (
               <BusItem key={bus.busId} item={bus} />
             ))}
