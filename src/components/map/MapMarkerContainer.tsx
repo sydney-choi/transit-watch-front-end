@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { MapMarker, MapMarkerProps, useMap } from 'react-kakao-maps-sdk';
+import { CustomOverlayMap, CustomOverlayMapProps, MapMarker, useMap } from 'react-kakao-maps-sdk';
 import { StationCard } from '@/components/map/StationCard';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { useStationStore } from '@/stores/useStationStore';
 
 interface MapMarkerContainerProps {
-  position: MapMarkerProps['position'];
+  position: CustomOverlayMapProps['position'];
   arsId: string;
 }
 
@@ -32,8 +32,13 @@ export const MapMarkerContainer = ({ position, arsId }: MapMarkerContainerProps)
   };
 
   return (
-    <MapMarker position={position} onClick={handleMarkerClick}>
-      {isOpen && <StationCard ref={ref} arsId={arsId} onClick={() => setIsOpen(false)} />}
-    </MapMarker>
+    <>
+      <MapMarker position={position} onClick={handleMarkerClick} />
+      {isOpen && (
+        <CustomOverlayMap xAnchor={0} yAnchor={0} position={position}>
+          <StationCard ref={ref} arsId={arsId} onClick={() => setIsOpen(false)} />
+        </CustomOverlayMap>
+      )}
+    </>
   );
 };
