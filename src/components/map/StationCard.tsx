@@ -16,21 +16,16 @@ interface StationCardProps {
 
 export const StationCard = forwardRef<HTMLDivElement | null, StationCardProps>(({ arsId, onClick }, ref) => {
   const { bookmarks, addBookmark, deleteBookmark } = useBookmarksStore();
-  const [isSavedbookmark, setIsSavedBookmark] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<string>(getCurrentTime());
   const { data, isLoading, isFetching, refetch, isSuccess } = useGetStationDetail(arsId);
+  const hasBookmark = !!bookmarks.find((target) => target.arsId === arsId);
 
   const handleBookmarkClick = () => {
-    const bookmark = bookmarks.find((target) => target.arsId === arsId);
     // TODO optimistic update로 구현
-    if (bookmark) {
-      setIsSavedBookmark(false);
-      deleteBookmark(bookmark.arsId);
-    } else {
-      setIsSavedBookmark(true);
-      if (data) {
-        addBookmark(data.result.station);
-      }
+    if (hasBookmark) {
+      deleteBookmark(arsId);
+    } else if (data) {
+      addBookmark(data.result.station);
     }
   };
 
@@ -94,7 +89,7 @@ export const StationCard = forwardRef<HTMLDivElement | null, StationCardProps>((
           <BookmarkButton
             style={{ position: 'absolute', top: '-5rem', right: '1rem' }}
             onClick={handleBookmarkClick}
-            isSavedBookmark={isSavedbookmark}
+            isSavedBookmark={hasBookmark}
           />
           <Box maxH="230px" overflowY="auto">
             {data.result.busList.map((bus) => (
