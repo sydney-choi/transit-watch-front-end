@@ -17,7 +17,7 @@ export const Main = () => {
   };
 
   return (
-    <Stack backgroundColor="white" w="100%" h="100%">
+    <Stack backgroundColor="white" w="100%" h="100%" position="relative">
       <Flex bgColor="#ff9900" p="20px">
         <Link href="/">
           <Box bgColor="#e3e3e3" minW="40px" p="8px" borderRadius="lg" mr="8px">
@@ -28,11 +28,11 @@ export const Main = () => {
           <SearchBox />
         </Box>
       </Flex>
-      <Box p="0 0.5rem">
-        <Heading as="h1" size="md">
+      <Box p="0 1rem">
+        <Heading as="h1" size="md" lineHeight={2}>
           즐겨찾는 정류장
         </Heading>
-        <Box minH="120px" border="1px solid gray" borderRadius="5px">
+        <Box minH="120px" border="1px solid #a8a8a8" borderRadius="10px">
           {bookmarks.length > 0 ? (
             <List>
               {bookmarks.map((bookmark) => (
@@ -49,7 +49,7 @@ export const Main = () => {
           )}
         </Box>
       </Box>
-      <Box p="8px">
+      <Box position="absolute" bottom="1rem" ml="1rem" fontSize="14px" color="#808080">
         <Text>혼잡도 판단기준은 다음과 같습니다.</Text>
         <Text>판단기준(승강장면적, 사람수)</Text>
         <Text>
