@@ -43,15 +43,7 @@ export const StationCard = forwardRef<HTMLDivElement | null, StationCardProps>((
   return (
     !isLoading &&
     isSuccess && (
-      <Box
-        position="relative"
-        w="240px"
-        maxH="calc(-4px + 50vh)"
-        transform="translateX(-50%)"
-        ref={ref}
-        backgroundColor="#fff"
-        boxShadow="lg"
-      >
+      <Box position="relative" w="240px" transform="translateX(-50%)" ref={ref} backgroundColor="#fff" boxShadow="lg">
         <CloseButton style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} onClick={onClick} />
         <Box p={3} backgroundColor="#eaeaea" minH={1} textAlign="center">
           <Text color="#616161" fontSize="sm">
