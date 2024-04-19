@@ -1,9 +1,8 @@
 import { forwardRef, useState } from 'react';
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Badge, Box, Flex, Text, VStack } from '@chakra-ui/react';
 import { STATUS_COLOR, STATUS_KR } from '@/constants/status';
 import { useBookmarksStore } from '@/stores/useBookmarkStore';
-import { getCurrentTime } from '@/lib/utils';
-import { BusItem } from '@/components/items/busItem';
+import { convertSecToMinText, getCurrentTime } from '@/lib/utils';
 import { BookmarkButton } from '@/components/common/buttons/bookmark';
 import { CloseButton } from '@/components/common/buttons/close';
 import { RefreshButton } from '@/components/common/buttons/refresh';
@@ -90,7 +89,38 @@ export const StationCard = forwardRef<HTMLDivElement | null, StationCardProps>((
           />
           <Box maxH="230px" overflowY="auto">
             {data.result.busList.map((bus) => (
-              <BusItem key={bus.busId} item={bus} />
+              <Flex
+                key={bus.busId}
+                alignItems="center"
+                justifyContent="space-between"
+                boxSizing="border-box"
+                p="0.5rem"
+                h="100%"
+                w="100%"
+              >
+                <Box w="30%" whiteSpace="wrap" flex={1}>
+                  <Text fontSize="lg" fontWeight="bold">
+                    {bus.busName}
+                  </Text>
+                  <Text fontSize="sm" color="grey">
+                    {bus.direction}방향
+                  </Text>
+                </Box>
+                <Flex alignItems="center" justifyContent="space-between" lineHeight="1.0rem" gap="1">
+                  <VStack alignItems="flex-end" justifyContent="center" minW="50px">
+                    <Text fontSize="md">{convertSecToMinText(bus.firstArrivalBusTime)}</Text>
+                    <Text fontSize="md">{convertSecToMinText(bus.secondArrivalBusTime)}</Text>
+                  </VStack>
+                  <VStack alignItems="flex-end" justifyContent="center">
+                    <Badge colorScheme={STATUS_COLOR[bus.firstArrivalBusCrowding]}>
+                      {STATUS_KR[bus.firstArrivalBusCrowding]}
+                    </Badge>
+                    <Badge colorScheme={STATUS_COLOR[bus.secondArrivalBusCrowding]}>
+                      {STATUS_KR[bus.secondArrivalBusCrowding]}
+                    </Badge>
+                  </VStack>
+                </Flex>
+              </Flex>
             ))}
           </Box>
         </Box>
