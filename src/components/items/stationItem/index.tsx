@@ -26,7 +26,7 @@ export const StationItem = ({ type, style, item, onClick }: StationItemProps) =>
     <HStack
       style={style}
       boxSizing="border-box"
-      p="0.5rem"
+      p="6px 18px 4px 15px"
       cursor="pointer"
       gap={0}
       w="100%"
@@ -35,7 +35,7 @@ export const StationItem = ({ type, style, item, onClick }: StationItemProps) =>
     >
       {isBookmark && <BookmarkButton onClick={handleBookmarkClick} isSavedBookmark />}
       <Box ml="0.5rem">
-        <Text fontSize="20px" fontWeight="bold">
+        <Text fontSize="18px" fontWeight="bold" wordBreak="keep-all">
           {item.stationName}
         </Text>
         <Text fontSize="14px" color="grey">
