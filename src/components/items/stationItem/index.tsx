@@ -39,7 +39,7 @@ export const StationItem = ({ type, style, item, onClick }: StationItemProps) =>
           {item.stationName}
         </Text>
         <Text fontSize="14px" color="grey">
-          {item.nextStationName}방향({item.arsId})
+          ({item.arsId})
         </Text>
       </Box>
     </HStack>
