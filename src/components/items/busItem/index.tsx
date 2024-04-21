@@ -1,11 +1,24 @@
-import { Text, HStack, Box, Flex, Badge, VStack } from '@chakra-ui/react';
+import { memo } from 'react';
+import { Text, Box, Flex, Badge, VStack } from '@chakra-ui/react';
 import { Bus } from '@/types/common';
 import { convertSecToMinText } from '@/lib/utils';
 import { STATUS_KR, STATUS_COLOR } from '@/constants/status';
 
-export const BusItem = ({ item }: { item: Bus }) => (
-  <HStack key={item.busId} boxSizing="border-box" p="0.5rem" h="100%" w="100%">
-    <Box w="30%" whiteSpace="wrap">
+interface BusItemProps {
+  item: Bus;
+}
+
+export const BusItem = memo(({ item }: BusItemProps) => (
+  <Flex
+    key={item.busId}
+    alignItems="center"
+    justifyContent="space-between"
+    boxSizing="border-box"
+    p="0.5rem"
+    h="100%"
+    w="100%"
+  >
+    <Box w="30%" whiteSpace="wrap" flex={1}>
       <Text fontSize="lg" fontWeight="bold">
         {item.busName}
       </Text>
@@ -27,5 +40,5 @@ export const BusItem = ({ item }: { item: Bus }) => (
         </Badge>
       </VStack>
     </Flex>
-  </HStack>
-);
+  </Flex>
+));
