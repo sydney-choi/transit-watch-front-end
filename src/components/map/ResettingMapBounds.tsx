@@ -13,7 +13,7 @@ export const ResettingMapBounds = ({ points }: ResettingMapBoundsProps) => {
     const latlngBounds = new kakao.maps.LatLngBounds();
 
     points.forEach((point) => {
-      latlngBounds.extend(new kakao.maps.LatLng(point.xlatitude, point.ylongitude));
+      latlngBounds.extend(new kakao.maps.LatLng(point.xlongitude, point.ylatitude));
     });
     return latlngBounds;
   }, [points]);

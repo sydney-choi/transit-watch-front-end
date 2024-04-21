@@ -5,18 +5,15 @@ import { Box } from '@chakra-ui/react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { useFindMyLocation } from '@/hooks/useFindMyLocation';
 import { useGetStationsNearby } from '@/hooks/useGetQueries';
-import { Coordinates } from '@/types/location';
 import { DEFAULT_LAT, DEFAULT_LNG, DEFAULT_RADIUS } from '@/constants/location';
 import { GetStationsNearbyRequest, Station } from '@/types/common';
 import { useStationStore } from '@/stores/useStationStore';
+import { useCoordinatesStore } from '@/stores/useCoordinatesStore';
 import { MapMarkerContainer } from '@/components/map/MapMarkerContainer';
 import { ResettingMapBounds } from '@/components/map/ResettingMapBounds';
 
 export const MapContainer = () => {
-  const [coordinates, setCoordinates] = useState<Coordinates>({
-    lat: DEFAULT_LAT,
-    lng: DEFAULT_LNG,
-  });
+  const { coordinates, setCoordinates } = useCoordinatesStore();
   const { station } = useStationStore();
   const [stationsNearby, setStationsNearby] = useState<Station[]>();
   const location = useFindMyLocation();
@@ -24,30 +21,30 @@ export const MapContainer = () => {
   useEffect(() => {
     // 위치 정보를 허용한 경우
     if (location.coordinates) {
-      const { lat, lng } = location.coordinates;
+      const { lng, lat } = location.coordinates;
       setCoordinates({
-        lat,
         lng,
+        lat,
       });
       // 검색창에서 아이템을 선택한 경우
     } else if (station.arsId) {
-      const { xlatitude, ylongitude } = station;
+      const { xlongitude, ylatitude } = station;
       setCoordinates({
-        lat: xlatitude,
-        lng: ylongitude,
+        lng: xlongitude,
+        lat: ylatitude,
       });
       // 위치 정보를 허용하지 않은 경우
     } else {
       setCoordinates({
-        lat: DEFAULT_LAT,
         lng: DEFAULT_LNG,
+        lat: DEFAULT_LAT,
       });
     }
-  }, [location, station]);
+  }, [location, setCoordinates, station]);
 
   const request: GetStationsNearbyRequest = {
-    xlatitude: coordinates.lat,
-    ylongitude: coordinates.lng,
+    xlongitude: coordinates.lng,
+    ylatitude: coordinates.lat,
     radius: DEFAULT_RADIUS,
   };
   const { data } = useGetStationsNearby(request);
@@ -76,13 +73,9 @@ export const MapContainer = () => {
               />
             )}
             {stationsNearby.map((item) => {
-              const { arsId, xlatitude, ylongitude } = item;
+              const { arsId, xlongitude, ylatitude } = item;
               return (
-                <MapMarkerContainer
-                  key={`${item.xlatitude}-${item.ylongitude}`}
-                  position={{ lat: xlatitude, lng: ylongitude }}
-                  arsId={arsId}
-                />
+                <MapMarkerContainer key={item.stationId} position={{ lng: xlongitude, lat: ylatitude }} arsId={arsId} />
               );
             })}
             <ResettingMapBounds points={stationsNearby} />

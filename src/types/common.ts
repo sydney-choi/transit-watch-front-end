@@ -1,10 +1,11 @@
 export interface Station {
+  stationId: string;
   arsId: string;
   stationName: string;
   nextStationName: string;
   crowding: string;
-  xlatitude: number;
-  ylongitude: number;
+  xlongitude: number;
+  ylatitude: number;
 }
 
 export interface Bus {
@@ -20,9 +21,20 @@ export interface Bus {
   secondArrivalTimeBefore: string;
 }
 
+export interface GetSearchStationsRequest {
+  searchText: string;
+  xlongitude: number;
+  ylatitude: number;
+}
+
+export interface GetSearchStationsResponse {
+  success: boolean;
+  result: Station[];
+}
+
 export interface GetStationsNearbyRequest {
-  xlatitude: number;
-  ylongitude: number;
+  xlongitude: number;
+  ylatitude: number;
   radius: number;
 }
 
