@@ -10,6 +10,7 @@ import { StationItem } from '@/components/items/stationItem';
 import { useStationStore } from '@/stores/useStationStore';
 
 export const Main = () => {
+  // TODO bookmark서버에서 가지고 오기
   const bookmarks = useBookmarksStore((state) => state.bookmarks);
   const { setStation } = useStationStore();
   const handleItemClick = (target: Station) => {
@@ -33,7 +34,9 @@ export const Main = () => {
           즐겨찾는 정류장
         </Heading>
         <Box minH="120px" border="1px solid #a8a8a8" borderRadius="10px">
-          {bookmarks.length > 0 ? (
+          {!bookmarks || bookmarks.length === 0 ? (
+            <Text>자주 사용하는 정류장을 등록해주세요!</Text>
+          ) : (
             <List>
               {bookmarks.map((bookmark) => (
                 <StationItem
@@ -44,8 +47,6 @@ export const Main = () => {
                 />
               ))}
             </List>
-          ) : (
-            <Text>즐겨찾는 정류장을 등록하세요</Text>
           )}
         </Box>
       </Box>

@@ -18,7 +18,7 @@ export const StationCard = forwardRef<HTMLDivElement | null, StationCardProps>((
   const { bookmarks, addBookmark, deleteBookmark } = useBookmarksStore();
   const [currentTime, setCurrentTime] = useState<string>(getCurrentTime());
   const { data, isLoading, isFetching, refetch, isSuccess } = useGetStationDetail(arsId);
-  const hasBookmark = !!bookmarks.find((target) => target.arsId === arsId);
+  const hasBookmark = !!bookmarks?.find((target) => target.arsId === arsId);
 
   const handleBookmarkClick = () => {
     // TODO optimistic update로 구현

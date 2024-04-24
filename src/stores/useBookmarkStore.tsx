@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 import { Station } from '@/types/common';
 
 interface BookmarkState {
-  bookmarks: Station[];
+  bookmarks: Station[] | null;
   addBookmark: (bookmark: Station) => void;
   deleteBookmark: (id: string) => void;
 }
@@ -11,13 +11,13 @@ interface BookmarkState {
 export const useBookmarksStore = create(
   persist<BookmarkState>(
     (set) => ({
-      bookmarks: [],
+      bookmarks: null,
 
-      addBookmark: (bookmark) => set((state) => ({ bookmarks: [...state.bookmarks, bookmark] })),
+      addBookmark: (bookmark) => set((state) => ({ bookmarks: [...(state.bookmarks ?? []), bookmark] })),
 
       deleteBookmark: (id) =>
         set((state) => ({
-          bookmarks: state.bookmarks.filter((bookmark) => bookmark.arsId !== id),
+          bookmarks: state.bookmarks?.filter((bookmark) => bookmark.arsId !== id),
         })),
     }),
     {
