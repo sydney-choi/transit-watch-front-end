@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Input, InputGroup, InputLeftElement, Box, Text } from '@chakra-ui/react';
-import { Station } from '@/types/common';
+import { GetSearchStationsRequest, Station } from '@/types/common';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useSearchStations } from '@/hooks/useGetQueries';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
@@ -10,6 +10,7 @@ import { useFocus } from '@/hooks/useFocus';
 import { Dropdown } from '@/components/search/Dropdown';
 import { useStationStore } from '@/stores/useStationStore';
 import { SearchIcon } from '@/components/icons';
+import { useCoordinatesStore } from '@/stores/useCoordinatesStore';
 
 export const SearchBox = () => {
   const [searchText, setSearchText] = useState<string>('');
@@ -17,7 +18,14 @@ export const SearchBox = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const { setStation } = useStationStore();
   const debouncedValue = useDebounce(searchText);
-  const { data: searchData, isLoading } = useSearchStations(debouncedValue);
+  const { coordinates } = useCoordinatesStore();
+  // TODO :get이 앞에 오면 동사형이므로 명사형으로 변경
+  const searchStationsRequest: GetSearchStationsRequest = {
+    searchText: debouncedValue,
+    xlongitude: coordinates.lng,
+    ylatitude: coordinates.lat,
+  };
+  const { data, isLoading } = useSearchStations(searchStationsRequest);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
@@ -74,7 +82,7 @@ export const SearchBox = () => {
           <Text>검색중..🔮</Text>
         </Box>
       ) : (
-        isDropdownOpen && searchData && <Dropdown ref={ref} options={searchData} onSelect={handleOptionClick} />
+        isDropdownOpen && data?.result && <Dropdown ref={ref} options={data.result} onSelect={handleOptionClick} />
       )}
     </Box>
   );

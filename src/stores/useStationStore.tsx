@@ -8,12 +8,13 @@ interface StationStore {
 
 export const useStationStore = create<StationStore>((set) => ({
   station: {
+    stationId: '',
     arsId: '',
     stationName: '',
     nextStationName: '',
     crowding: '',
-    xlatitude: 0,
-    ylongitude: 0,
+    xlongitude: 0,
+    ylatitude: 0,
   },
   setStation: (station: Station) => set({ station }),
 }));
