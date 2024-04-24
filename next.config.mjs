@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   compiler: {
     styledComponents: true,
   },
@@ -11,6 +11,14 @@ const nextConfig = {
     });
 
     return config;
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api',
+        destination: `http://49.50.174.146:8080`,
+      },
+    ];
   },
 };
 
