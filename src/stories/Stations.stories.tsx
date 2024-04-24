@@ -42,7 +42,7 @@ const type = 'bookmark';
 export const Default = () => (
   <List>
     {items.map((item) => (
-      <StationItem item={item} type={type} />
+      <StationItem key={item.stationId} item={item} type={type} />
     ))}
   </List>
 );

@@ -74,7 +74,7 @@ const items: Bus[] = [
 export const Default = () => (
   <List>
     {items.map((item) => (
-      <BusItem item={item} />
+      <BusItem item={item} key={item.busId} />
     ))}
   </List>
 );
