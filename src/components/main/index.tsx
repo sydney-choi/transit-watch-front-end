@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { HomeIcon } from '@/components/icons';
 import { Badge, Box, Flex, Stack, Text, Heading, List } from '@chakra-ui/react';
 import { useBookmarksStore } from '@/stores/useBookmarkStore';
@@ -10,10 +11,29 @@ import { StationItem } from '@/components/items/stationItem';
 import { useStationStore } from '@/stores/useStationStore';
 
 export const Main = () => {
-  const bookmarks = useBookmarksStore((state) => state.bookmarks);
+  // TODO bookmark서버에서 가지고 오기
+  const { bookmarks, loadBookmarks, isLoading } = useBookmarksStore();
   const { setStation } = useStationStore();
+
+  useEffect(() => {
+    loadBookmarks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleItemClick = (target: Station) => {
     setStation(target);
+  };
+
+  const renderBookmarks = () => {
+    if (isLoading) return <Text>로딩 중...</Text>;
+    if (!bookmarks || bookmarks.length === 0) return <Text>자주 사용하는 정류장을 등록해주세요!</Text>;
+    return (
+      <List>
+        {bookmarks.map((bookmark) => (
+          <StationItem key={bookmark.arsId} type="bookmark" item={bookmark} onClick={() => handleItemClick(bookmark)} />
+        ))}
+      </List>
+    );
   };
 
   return (
@@ -33,20 +53,7 @@ export const Main = () => {
           즐겨찾는 정류장
         </Heading>
         <Box minH="120px" border="1px solid #a8a8a8" borderRadius="10px">
-          {bookmarks.length > 0 ? (
-            <List>
-              {bookmarks.map((bookmark) => (
-                <StationItem
-                  key={bookmark.arsId}
-                  type="bookmark"
-                  item={bookmark}
-                  onClick={() => handleItemClick(bookmark)}
-                />
-              ))}
-            </List>
-          ) : (
-            <Text>즐겨찾는 정류장을 등록하세요</Text>
-          )}
+          {renderBookmarks()}
         </Box>
       </Box>
       <Box position="absolute" bottom="1rem" ml="1rem" fontSize="14px" color="#808080">
