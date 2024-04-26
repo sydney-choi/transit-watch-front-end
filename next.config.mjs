@@ -16,7 +16,7 @@ const nextConfig = {
     return [
       {
         source: '/api',
-        destination: `http://49.50.174.146:8080`,
+        destination: `https://49.50.174.146:8080`,
       },
     ];
   },
