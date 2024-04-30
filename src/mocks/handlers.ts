@@ -2,6 +2,7 @@ import { http, HttpResponse } from 'msw';
 
 const stations = [
   {
+    stationId: '1',
     arsId: '00001',
     stationName: '경기도인재개발원.연구원.평생교육진흥원.여성가족재단',
     nextStationName: '용산우체국',
@@ -9,6 +10,7 @@ const stations = [
     ylatitude: 126.570667,
   },
   {
+    stationId: '2',
     arsId: '01237',
     stationName: '서울신문사',
     nextStationName: '종로2가사거리',
@@ -16,6 +18,7 @@ const stations = [
     ylatitude: 126.97692061282088,
   },
   {
+    stationId: '3',
     arsId: '01238',
     stationName: '서울광장',
     nextStationName: '을지로입구.로얄호텔',
@@ -23,6 +26,7 @@ const stations = [
     ylatitude: 126.97882248848845,
   },
   {
+    stationId: '4',
     arsId: '00003',
     stationName: '역명4',
     nextStationName: '광화문역',
@@ -30,6 +34,7 @@ const stations = [
     ylatitude: 127.0263723554437,
   },
   {
+    stationId: '5',
     arsId: '00003',
     stationName: '역명5',
     nextStationName: '광화문역',
@@ -37,6 +42,7 @@ const stations = [
     ylatitude: 126.570667,
   },
   {
+    stationId: '6',
     arsId: '00003',
     stationName: '역명6',
     nextStationName: '광화문역',
@@ -44,6 +50,7 @@ const stations = [
     ylatitude: 127.0263723554437,
   },
   {
+    stationId: '7',
     stationName: '역명7',
     nextStationName: '광화문역',
     arsId: '00003',
@@ -51,6 +58,7 @@ const stations = [
     ylatitude: 126.570667,
   },
   {
+    stationId: '8',
     arsId: '00003',
     stationName: '역명8',
     nextStationName: '광화문역',
@@ -58,6 +66,7 @@ const stations = [
     ylatitude: 127.0263723554437,
   },
   {
+    stationId: '9',
     arsId: '00003',
     stationName: '역명9',
     nextStationName: '광화문역',
@@ -65,6 +74,7 @@ const stations = [
     ylatitude: 126.570667,
   },
   {
+    stationId: '10',
     stationName: '역명10',
     nextStationName: '광화문역',
     arsId: '00003',
@@ -72,6 +82,7 @@ const stations = [
     ylatitude: 127.0263723554437,
   },
   {
+    stationId: '11',
     arsId: '00003',
     stationName: '역명11',
     nextStationName: '광화문역',
@@ -79,6 +90,7 @@ const stations = [
     ylatitude: 126.570667,
   },
   {
+    stationId: '12',
     arsId: '00003',
     stationName: '역명12',
     nextStationName: '광화문역',
@@ -86,6 +98,7 @@ const stations = [
     ylatitude: 127.0263723554437,
   },
   {
+    stationId: '13',
     arsId: '00003',
     stationName: '역명13',
     nextStationName: '광화문역',
@@ -93,6 +106,7 @@ const stations = [
     ylatitude: 126.570667,
   },
   {
+    stationId: '14',
     arsId: '00003',
     stationName: '역명14',
     nextStationName: '광화문역',
@@ -100,6 +114,7 @@ const stations = [
     ylatitude: 127.0263723554437,
   },
   {
+    stationId: '15',
     arsId: '00003',
     stationName: '역명15',
     nextStationName: '광화문역',
