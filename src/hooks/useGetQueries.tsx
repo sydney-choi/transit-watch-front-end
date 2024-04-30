@@ -30,6 +30,7 @@ export const useGetStationsNearby = (request: GetStationsNearbyRequest) =>
           `/v1/bus-stops/near?tmX=${request.xlongitude}&tmY=${request.ylatitude}&radius=${request.radius}`,
         )
       ).data,
+    enabled: !!request.xlongitude || !!request.ylatitude,
     staleTime: Infinity, // TODO: 임시설정, 배포 전 staleTime 변경하기
   });
 

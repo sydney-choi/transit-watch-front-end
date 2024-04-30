@@ -17,6 +17,13 @@ export const MapContainer = () => {
   const { station } = useStationStore();
   const [stationsNearby, setStationsNearby] = useState<Station[]>();
   const location = useFindMyLocation();
+  const request: GetStationsNearbyRequest = {
+    xlongitude: coordinates.lng,
+    ylatitude: coordinates.lat,
+    radius: DEFAULT_RADIUS,
+  };
+
+  const { data } = useGetStationsNearby(request);
 
   useEffect(() => {
     // 위치 정보를 허용한 경우
@@ -42,13 +49,6 @@ export const MapContainer = () => {
     }
   }, [location, setCoordinates, station]);
 
-  const request: GetStationsNearbyRequest = {
-    xlongitude: coordinates.lng,
-    ylatitude: coordinates.lat,
-    radius: DEFAULT_RADIUS,
-  };
-  const { data } = useGetStationsNearby(request);
-
   useEffect(() => {
     if (data) {
       setStationsNearby(data.result);
@@ -73,9 +73,9 @@ export const MapContainer = () => {
               />
             )}
             {stationsNearby.map((item) => {
-              const { arsId, xlongitude, ylatitude } = item;
+              const { stationId, arsId, xlongitude, ylatitude } = item;
               return (
-                <MapMarkerContainer key={item.stationId} position={{ lng: xlongitude, lat: ylatitude }} arsId={arsId} />
+                <MapMarkerContainer key={stationId} position={{ lng: xlongitude, lat: ylatitude }} arsId={arsId} />
               );
             })}
             <ResettingMapBounds points={stationsNearby} />
