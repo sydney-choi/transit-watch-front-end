@@ -78,7 +78,7 @@ export const MapContainer = () => {
                 <MapMarkerContainer key={stationId} position={{ lng: xlongitude, lat: ylatitude }} arsId={arsId} />
               );
             })}
-            <ResettingMapBounds points={stationsNearby} />
+            <ResettingMapBounds position={coordinates} />
           </Map>
         )}
       </Suspense>

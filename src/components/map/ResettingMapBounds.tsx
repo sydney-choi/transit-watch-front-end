@@ -1,22 +1,13 @@
-import { useMemo } from 'react';
 import { useMap } from 'react-kakao-maps-sdk';
-import { Station } from '@/types/common';
 import { MapFocusButton } from '@/components/common/buttons/map';
+import { Coordinates } from '@/types/location';
 
 interface ResettingMapBoundsProps {
-  points: Station[];
+  position: Coordinates;
 }
 
-export const ResettingMapBounds = ({ points }: ResettingMapBoundsProps) => {
+export const ResettingMapBounds = ({ position }: ResettingMapBoundsProps) => {
   const map = useMap();
-  const bounds = useMemo(() => {
-    const latlngBounds = new kakao.maps.LatLngBounds();
-
-    points.forEach((point) => {
-      latlngBounds.extend(new kakao.maps.LatLng(point.xlongitude, point.ylatitude));
-    });
-    return latlngBounds;
-  }, [points]);
 
   return (
     <MapFocusButton
@@ -34,7 +25,7 @@ export const ResettingMapBounds = ({ points }: ResettingMapBoundsProps) => {
         backgroundColor: 'rgba(255, 255, 255, 0.95)',
         boxShadow: '0 2px 1px 0 rgba(0,0,0,0.1), 0 0 3px 0 rgba(0,0,0,0.32)',
       }}
-      onClick={() => map.setBounds(bounds, 50, 50, 50, 50)}
+      onClick={() => map.setCenter(new kakao.maps.LatLng(position.lat, position.lng))}
     />
   );
 };
