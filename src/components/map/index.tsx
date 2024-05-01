@@ -10,7 +10,7 @@ import { GetStationsNearbyRequest, Station } from '@/types/common';
 import { useStationStore } from '@/stores/useStationStore';
 import { useCoordinatesStore } from '@/stores/useCoordinatesStore';
 import { MapMarkerContainer } from '@/components/map/MapMarkerContainer';
-import { ResettingMapBounds } from '@/components/map/ResettingMapBounds';
+import { ResettingMapCenter } from '@/components/map/ResettingMapCenter';
 
 export const MapContainer = () => {
   const { coordinates, setCoordinates } = useCoordinatesStore();
@@ -78,7 +78,7 @@ export const MapContainer = () => {
                 <MapMarkerContainer key={stationId} position={{ lng: xlongitude, lat: ylatitude }} arsId={arsId} />
               );
             })}
-            <ResettingMapBounds position={coordinates} />
+            <ResettingMapCenter position={coordinates} />
           </Map>
         )}
       </Suspense>

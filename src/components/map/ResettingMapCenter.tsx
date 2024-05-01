@@ -2,11 +2,11 @@ import { useMap } from 'react-kakao-maps-sdk';
 import { MapFocusButton } from '@/components/common/buttons/map';
 import { Coordinates } from '@/types/location';
 
-interface ResettingMapBoundsProps {
+interface ResettingMapCenterProps {
   position: Coordinates;
 }
 
-export const ResettingMapBounds = ({ position }: ResettingMapBoundsProps) => {
+export const ResettingMapCenter = ({ position }: ResettingMapCenterProps) => {
   const map = useMap();
 
   return (
