@@ -26,22 +26,22 @@ export const MapContainer = () => {
   const { data } = useGetStationsNearby(request);
 
   useEffect(() => {
-    // 위치 정보를 허용한 경우
-    if (location.coordinates) {
-      const { lng, lat } = location.coordinates;
-      setCoordinates({
-        lng,
-        lat,
-      });
+    if (station.arsId) {
       // 검색창에서 아이템을 선택한 경우
-    } else if (station.arsId) {
       const { xlongitude, ylatitude } = station;
       setCoordinates({
         lng: xlongitude,
         lat: ylatitude,
       });
-      // 위치 정보를 허용하지 않은 경우
+    } else if (location.coordinates && location.coordinates.lat > 0) {
+      // 위치 정보를 허용한 경우
+      const { lng, lat } = location.coordinates;
+      setCoordinates({
+        lng,
+        lat,
+      });
     } else {
+      // 위치 정보를 허용하지 않은 경우
       setCoordinates({
         lng: DEFAULT_LNG,
         lat: DEFAULT_LAT,
@@ -58,11 +58,11 @@ export const MapContainer = () => {
   return (
     <Box h="100vh" w="100%" overflow="hidden">
       <Suspense fallback={<p>로딩중..</p>}>
-        {location.loaded && stationsNearby && (
+        {location.loaded && (
           <Map center={coordinates} style={{ position: 'relative', width: '100%', height: '100%' }} level={4} isPanto>
             {location.coordinates && (
               <MapMarker
-                position={coordinates}
+                position={{ lng: location.coordinates.lng, lat: location.coordinates.lat }}
                 image={{
                   src: '/RedMarker.png',
                   size: {
@@ -72,7 +72,7 @@ export const MapContainer = () => {
                 }}
               />
             )}
-            {stationsNearby.map((item) => {
+            {stationsNearby?.map((item) => {
               const { stationId, arsId, xlongitude, ylatitude } = item;
               return (
                 <MapMarkerContainer key={stationId} position={{ lng: xlongitude, lat: ylatitude }} arsId={arsId} />
