@@ -31,12 +31,12 @@ export const useGetStationsNearby = (request: GetStationsNearbyRequest) =>
         )
       ).data,
     enabled: !!request.xlongitude || !!request.ylatitude,
-    staleTime: Infinity, // TODO: 임시설정, 배포 전 staleTime 변경하기
+    staleTime: 60 * 1000,
   });
 
 export const useGetStationDetail = (arsId: string) =>
   useQuery<GetStationDetailResponse>({
     queryKey: ['getStationDetail', arsId],
     queryFn: async () => (await client.get(`/v1/bus-stops/detail/${arsId}`)).data,
-    staleTime: Infinity,
+    staleTime: 60 * 1000,
   });
