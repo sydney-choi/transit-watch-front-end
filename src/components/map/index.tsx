@@ -11,11 +11,13 @@ import { useStationStore } from '@/stores/useStationStore';
 import { useCoordinatesStore } from '@/stores/useCoordinatesStore';
 import { MapMarkerContainer } from '@/components/map/MapMarkerContainer';
 import { ResettingMapCenter } from '@/components/map/ResettingMapCenter';
+import { Coordinates } from '@/types/location';
 
 export const MapContainer = () => {
   const { coordinates, setCoordinates } = useCoordinatesStore();
   const { station } = useStationStore();
   const [stationsNearby, setStationsNearby] = useState<Station[]>();
+  const [currentCoordinates, setCurrentCoordinates] = useState<Coordinates>({ lng: 0, lat: 0 });
   const location = useFindMyLocation();
   const request: GetStationsNearbyRequest = {
     xlongitude: coordinates.lng,
@@ -55,6 +57,23 @@ export const MapContainer = () => {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (location.coordinates && location.coordinates.lat > 0) {
+      // 위치 정보를 허용한 경우
+      const { lng, lat } = location.coordinates;
+      setCurrentCoordinates({
+        lng,
+        lat,
+      });
+    } else {
+      // 위치 정보를 허용하지 않은 경우
+      setCurrentCoordinates({
+        lng: DEFAULT_LNG,
+        lat: DEFAULT_LAT,
+      });
+    }
+  }, [location.coordinates]);
+
   return (
     <Box h="100vh" w="100%" overflow="hidden">
       <Suspense fallback={<p>로딩중..</p>}>
@@ -78,7 +97,7 @@ export const MapContainer = () => {
                 <MapMarkerContainer key={stationId} position={{ lng: xlongitude, lat: ylatitude }} arsId={arsId} />
               );
             })}
-            <ResettingMapCenter position={coordinates} />
+            <ResettingMapCenter position={currentCoordinates} />
           </Map>
         )}
       </Suspense>
