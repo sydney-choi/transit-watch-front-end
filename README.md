@@ -72,6 +72,6 @@ pnpm dev
 
 ## Contributor
 
-front-end: 프롱이 sydney-choi
+front-end: @sydney-choi
 
-back-end: 든든한 yeyounglim 과 함께 작업했어요.
+back-end: @yeyounglim
