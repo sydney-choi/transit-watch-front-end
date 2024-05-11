@@ -1,0 +1,40 @@
+.search-bar {
+   display: flex;
+   gap:15px;
+   background-color: $main-theme-color;
+   padding:15px 25px;
+   align-items: center;
+   .logo {
+      background: transparent;
+      padding:0;
+   }
+   .search-ipt {
+      position: relative;
+      flex: 1 1 auto;
+      .text {
+         background:#fff;
+         font-size: $font-size-m;
+         height:50px;
+         padding:0 20px 0 16px;
+         border-radius: 4px;
+         border:0;
+         box-shadow: 0px 4px 6px 0px #00000026;
+         &::placeholder {
+            color: $font-color-gray;
+            font-size: $font-size-m;
+         }
+      }
+      .btn-search {
+         display: block;
+         position: absolute;
+         top:12px;
+         right:12px;
+         height:27px;
+         width:27px;
+         min-width: 0;
+         padding: 0;
+         font-size:0;
+         background:url('/images/ico_search.svg') no-repeat center center;
+      }
+   }
+}

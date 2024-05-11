@@ -1,0 +1,9 @@
+@import 'variables.scss';
+@import 'layout.scss';
+@import 'common.scss';
+@import 'font.scss';
+
+html, body {
+   font-family: 'Pretendard', sans-serif !important;
+   font-weight: 400;
+}
