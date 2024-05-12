@@ -1,3 +1,6 @@
+.action-box {
+   background: #fff;
+}
 .search-bar {
    display: flex;
    gap:15px;
@@ -35,6 +38,60 @@
          padding: 0;
          font-size:0;
          background:url('/images/ico_search.svg') no-repeat center center;
+         z-index: 1;
+         &:active {
+            background-color: $active-color-gray;
+         }
+      }
+   }
+}
+.bookmark-cont {
+   padding: 25px 30px;
+   .home-tit {
+      font-size: 24px;
+      font-weight: 700;
+   }
+   .mark-list {
+      li {
+         position: relative;
+         border:1px solid #D9D9D9;
+         border-radius: 4px;
+         padding:16px 20px 16px 50px;
+         height:84px;
+         margin-top:10px;
+         cursor: pointer;
+         .icon-mark {
+            position: absolute;
+            z-index: 1;
+            left: 20px;
+            top:20px;
+            width:23px;
+            height:23px;
+            min-width: 0;
+            font-size: 0;
+            padding:0;
+            background:url('/images/ico_star.svg') no-repeat center center;
+            &:active {
+               background-color: $active-color-gray;
+            }
+         }
+         .stop-name {
+            font-size: $font-size-m;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+         }
+         .sub-text {
+            font-size: $font-size-s;
+            color: $font-color-gray;
+         }
+         &.active {
+            border-color: #574F4F;
+         }
+         &:hover {
+            background-color: $active-color-gray;
+         }
       }
    }
 }
