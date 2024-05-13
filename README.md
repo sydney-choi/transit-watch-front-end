@@ -23,23 +23,26 @@ https://transit-watch.vercel.app/
 ## 프로젝트 상세 설명
 
 ### 1. 정류장 검색 기능
+<img width="350px" src="https://github.com/sydney-choi/transit-watch-front-end/assets/68490447/fe2922a2-9b27-4e01-b394-403991b08cf2" />
 
 - 정류장을 자동완성을 통해 검색할 수 있어요.
 
 ### 2. 위치기반 근처 정류장 조회 기능
+<img width="350px" src="https://github.com/sydney-choi/transit-watch-front-end/assets/68490447/776d02e4-198b-4622-873a-6b3044294478" />
 
 - 위치 정보를 켜면 반경 1km의 정류장 정보를 확인할 수 있어요. (켜지 않았을 경우 서울 시청을 중심으로 반경 1km 정류장이 표시되요)
 
 ### 3. 정류장 혼잡도 조회 기능
+<img width="350px" src="https://github.com/sydney-choi/transit-watch-front-end/assets/68490447/7c1101e2-0317-41e9-8dbb-072091726c32" />
 
 - 팝업창을 통해 정류장 혼잡도와 버스 안 혼잡도를 확인할 수 있어요.
 
 ### 4. 북마크 기능
+<img width="350px" src="https://github.com/sydney-choi/transit-watch-front-end/assets/68490447/b1a12f55-7cf3-470d-b68a-7260a8ec41ea" />
 
 - `localstorage`를 사용하여 북마크가 조회/등록 될 수 있게 했어요.
 
 ## 프로젝트 구조
-
 <img src="https://camo.githubusercontent.com/0fbbdfc9d7ccd04e1c60654a80b1e7f4030453b75d1729528c77aa4bbd1cefc7/68747470733a2f2f692e696d6775722e636f6d2f593866613156312e706e67"/>
 
 ## **Documentation**
