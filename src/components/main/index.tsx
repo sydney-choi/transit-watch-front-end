@@ -60,13 +60,13 @@ export const Main = () => {
         <Text>혼잡도 판단기준은 다음과 같습니다.</Text>
         <Text>판단기준(승강장면적, 사람수)</Text>
         <Text>
-          <Badge colorScheme="green">여유</Badge> : 1m2당 0.5명 이하
+          <Badge colorScheme="green">여유</Badge> : 1m²당 0.5명 이하
         </Text>
         <Text>
-          <Badge colorScheme="blue">보통</Badge> : 1m2당 0.5명 초과 1.1명 이하
+          <Badge colorScheme="blue">보통</Badge> : 1m²당 0.5명 초과 1.1명 이하
         </Text>
         <Text>
-          <Badge colorScheme="red">혼잡</Badge> : 1m2당 1.1명 초과
+          <Badge colorScheme="red">혼잡</Badge> : 1m²당 1.1명 초과
         </Text>
       </Box>
     </Stack>
