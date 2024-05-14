@@ -1,5 +1,6 @@
 .action-box {
    background: #fff;
+   height:100vh;
 }
 .search-bar {
    display: flex;
@@ -46,20 +47,36 @@
    }
 }
 .bookmark-cont {
-   padding: 25px 30px;
+   padding: 25px 30px 0;
+   height: calc(100% - 200px);
    .home-tit {
       font-size: 24px;
       font-weight: 700;
    }
    .mark-list {
+      overflow: auto;
+      padding-right: 10px;
+      height:calc(100% - 30px);
       li {
          position: relative;
-         border:1px solid #D9D9D9;
-         border-radius: 4px;
-         padding:16px 20px 16px 50px;
-         height:84px;
          margin-top:10px;
-         cursor: pointer;
+         //cursor: pointer;
+         .box {
+            display: block;
+            background: #fff;
+            height:84px;
+            width:100%;
+            padding:16px 20px 16px 50px;
+            border:1px solid #D9D9D9;
+            border-radius: 4px;
+            text-align: left;
+            &:hover {
+               background-color: $active-color-gray;
+            }
+            &.active {
+               border-color: #574F4F;
+            }
+         }
          .icon-mark {
             position: absolute;
             z-index: 1;
@@ -85,13 +102,84 @@
          .sub-text {
             font-size: $font-size-s;
             color: $font-color-gray;
-         }
-         &.active {
-            border-color: #574F4F;
-         }
-         &:hover {
-            background-color: $active-color-gray;
+            font-weight: 400;
+            margin-top: 5px;
+            .num {
+               position: relative;
+               margin-right: 14px;
+               &::before {
+                  position: absolute;
+                  background-color: #ddd;
+                  height:16px;
+                  width:1px;
+                  right:-7px;
+                  top:0;
+                  content: '';
+               }
+            }
          }
       }
    }
+}
+.info-tooltip {
+   border-radius: 4px;
+   padding: 20px !important;
+   box-shadow: 0px 4px 10px 0px #00000033 !important;
+   .main-txt {
+      color:#6E6E6E;
+      font-weight: 600;
+      font-size: $font-size-m;
+   }
+   .desc {
+      color:#6E6E6E;
+      font-size: $font-size-xs;
+      font-weight: 400;
+   }
+   .info {
+      position: relative;
+      padding-left:12px;
+      margin-top: 4px;
+      color:#888;
+      font-size: $font-size-xs;
+      &:after {
+         position: absolute;
+         left:0;
+         top:5px;
+         width:8px;
+         height:8px;
+         border-radius: 50%;
+         content: '';
+      }
+      &.green {
+         margin-top:10px;
+         &:after {
+            background-color: #5CCD70;
+         }
+      }
+      &.blue {
+         &:after {
+            background-color: #7D9EF4;
+         }
+      }
+      &.red {
+         &:after {
+            background-color: #EE5A32;
+         }
+      }
+   }
+}
+.float-q-mark {
+   position: fixed !important;
+   bottom:25px !important;
+   left:25px !important;
+   background: #bbb !important;
+   padding:0 !important;
+   width:50px !important;
+   height:50px !important;
+   line-height: 50px !important;
+   text-align: center !important;
+   border-radius: 50% !important;
+   color:#fff !important;
+   font-size: 32px !important;
+   font-weight: 600 !important;
 }
