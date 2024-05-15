@@ -1,3 +1,30 @@
-.test {
-   
+// 혼잡도 기준 툴팁 아이콘
+.float-q-mark {
+   position: fixed !important;
+   top:108px !important;
+   left:428px !important;
+   background: #fff !important;
+   border:2px solid #bbb !important;
+   padding:0 !important;
+   width:27px !important;
+   height:27px !important;
+   line-height: 27px !important;
+   text-align: center !important;
+   border-radius: 50% !important;
+   color:#bbb !important;
+   font-size: 18px !important;
+   font-weight: 600 !important;
 }
+
+
+//닫기 X 버튼
+.btn-close {
+   background:url('/images/ico_close.svg') transparent no-repeat center center !important;
+   background-size: 14px;
+   font-size: 0 !important;
+   line-height: 0 !important;
+   width:20px !important;
+   height:20px !important;
+   padding:0 !important;
+}
+

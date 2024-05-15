@@ -9,9 +9,10 @@ html, body {
    font-size: $font-size-m;
    color: $font-color-black;
    height:100vh;
+   line-height: 1.2 !important;
 }
 button {
-   min-width: 0;
+   min-width: 0 !important;
 }
 
 *::-webkit-scrollbar {
@@ -20,7 +21,7 @@ button {
    background-color: #D9D9D9;
 }
 *::-webkit-scrollbar-thumb {
-   background-color: #888;
+   background-color: #aaa;
    border-radius: 5px;
 }
  *::-webkit-scrollbar-track {
