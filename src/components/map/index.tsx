@@ -1,7 +1,7 @@
 'use client';
 
 import { Suspense, useEffect, useState } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Button, List, ListItem } from '@chakra-ui/react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { useFindMyLocation } from '@/hooks/useFindMyLocation';
 import { useGetStationsNearby } from '@/hooks/useGetQueries';
@@ -101,6 +101,43 @@ export const MapContainer = () => {
           </Map>
         )}
       </Suspense>
+      {/* 새로운 스테이션 카드 */}
+      <Box className="station-card" style={{ position: 'absolute', top: '200px', left: '800px' }}>
+        <Button className="star">즐겨찾기</Button>
+        <Button className="btn-close">닫기</Button>
+        <Box className="top-cont">
+          <p className="station-name">동대문디자인플라자.동대문시장 여기는 길면 두줄로 노출되야할듯</p>
+          <p className="station-sub-text">
+            <span className="num">02157</span>
+            <span className="direct">시청, 서소문청사 방면 여기도 내용이 길면 자동으로 말줄임 처리가 됩니다</span>
+          </p>
+          <p className="now-stat red">혼잡(외 컬러필요)</p>
+        </Box>
+        <Box className="head">
+          <p>실시간 버스정보</p>
+          <Box className="right">
+            <p className="date">
+              <span>5/11</span>
+              <span>16:08</span>
+            </p>
+            <Button className="refresh">새로고침</Button>
+          </Box>
+        </Box>
+        <List className="bus-list-box">
+          <ListItem>
+            <Box>
+              <Box className="left">
+                <span className="badge">간선</span>
+                <span className="bus-num">05</span>
+              </Box>
+              <Box className="right">
+                <p>혼잡</p>
+                <p>혼잡</p>
+              </Box>
+            </Box>
+          </ListItem>
+        </List>
+      </Box>
     </Box>
   );
 };

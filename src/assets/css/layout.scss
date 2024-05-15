@@ -190,7 +190,7 @@
       position: relative;
       padding-left:12px;
       margin-top: 4px;
-      color:#888;
+      color:$font-color-gray;
       font-size: $font-size-xs;
       font-weight: 400;
       &:after {
@@ -205,17 +205,17 @@
       &.green {
          margin-top:10px;
          &:after {
-            background-color: #5CCD70;
+            background-color: $stat-color-green;
          }
       }
       &.blue {
          &:after {
-            background-color: #7D9EF4;
+            background-color: $stat-color-blue;
          }
       }
       &.red {
          &:after {
-            background-color: #EE5A32;
+            background-color: $stat-color-red;
          }
       }
    }
@@ -234,6 +234,66 @@
    .text {
       font-weight: 400;
       font-size: $font-size-m;
-      color:#888;
+      color:$font-color-gray;
+   }
+}
+
+.station-card {
+   position: relative;
+   box-shadow: 0px 4px 10px 0px #00000040;
+   width:378px;
+   height:606px;
+   .top-cont {
+      padding:10px;
+   }
+   .star {
+      position: absolute;
+      top:10px;
+      right:40px;
+      width:26px;
+      height:26px;
+      background:url('/images/ico_star_off.svg') no-repeat center center;
+      font-size: 0;
+      line-height: 0;
+      padding:0;
+      &:hover {
+         background:url('/images/ico_star_off.svg') no-repeat center center;
+      }
+   }
+   .btn-close {
+      position: absolute;
+      top:10px;
+      right:10px;
+   }
+   .station-name {
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 58px;
+      text-align: center;
+   }
+   .now-stat {
+      text-align: center;
+      font-weight: 700;
+      font-size: 20px;
+      &.red {
+         color:#F46262;
+      }
+      &.green {
+         color:#F46262;
+      }
+      &.blue {
+         color:#F46262;
+      }
+      &.gray {
+         color:#F46262;
+      }
+   }
+   .head {
+      display: flex;
+      padding:20px 10px;
+      background: #F4F4F4;
+      justify-content: space-between;
+      font-size: $font-size-s;
+      color:$font-color-gray;
    }
 }

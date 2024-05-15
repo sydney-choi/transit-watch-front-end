@@ -6,10 +6,6 @@ import { Image, Input, Box, Flex, Button, List, ListItem, Tooltip } from '@chakr
 import { MapContainer } from '@/components/map';
 // import { SearchIcon } from '@/components/icons';
 
-function isClick() {
-  console.log('aa');
-}
-
 const Page = () => (
   <Flex>
     <Box w="486px" className="action-box">
@@ -67,7 +63,7 @@ const Page = () => (
           <ListItem>
             <Box>
               <Button className="icon-mark">즐겨찾기</Button>
-              <Button className="box" onClick={() => isClick()}>
+              <Button className="box">
                 <p className="stop-name">영통.랜드마크호텔(공항버스)</p>
                 <p className="station-sub-text">
                   <span className="num">02157</span>
@@ -79,7 +75,7 @@ const Page = () => (
           <ListItem>
             <Box>
               <Button className="icon-mark">즐겨찾기</Button>
-              <Button className="box" onClick={() => isClick()}>
+              <Button className="box">
                 <p className="stop-name">버스 정류장 이름이 길땐 말줄임으로 처리된다 버스 정류장 이름이</p>
                 <p className="station-sub-text">
                   <span className="num">02157</span>
@@ -91,7 +87,7 @@ const Page = () => (
           <ListItem>
             <Box>
               <Button className="icon-mark">즐겨찾기</Button>
-              <Button className="box" onClick={() => isClick()}>
+              <Button className="box active">
                 <p className="stop-name">선택했을 때 진한 라인</p>
                 <p className="station-sub-text">
                   <span className="num">02157</span>
@@ -103,7 +99,7 @@ const Page = () => (
           <ListItem>
             <Box>
               <Button className="icon-mark">즐겨찾기</Button>
-              <Button className="box" onClick={() => isClick()}>
+              <Button className="box">
                 <p className="stop-name">영통.랜드마크호텔(공항버스)</p>
                 <p className="station-sub-text">
                   <span className="num">02157</span>
@@ -115,7 +111,7 @@ const Page = () => (
           <ListItem>
             <Box>
               <Button className="icon-mark">즐겨찾기</Button>
-              <Button className="box" onClick={() => isClick()}>
+              <Button className="box">
                 <p className="stop-name">영통.랜드마크호텔(공항버스)</p>
                 <p className="station-sub-text">
                   <span className="num">02157</span>
@@ -127,7 +123,7 @@ const Page = () => (
           <ListItem>
             <Box>
               <Button className="icon-mark">즐겨찾기</Button>
-              <Button className="box" onClick={() => isClick()}>
+              <Button className="box">
                 <p className="stop-name">영통.랜드마크호텔(공항버스)</p>
                 <p className="station-sub-text">
                   <span className="num">02157</span>
@@ -139,7 +135,7 @@ const Page = () => (
           <ListItem>
             <Box>
               <Button className="icon-mark">즐겨찾기</Button>
-              <Button className="box" onClick={() => isClick()}>
+              <Button className="box">
                 <p className="stop-name">영통.랜드마크호텔(공항버스)</p>
                 <p className="station-sub-text">
                   <span className="num">02157</span>
@@ -151,7 +147,7 @@ const Page = () => (
           <ListItem>
             <Box>
               <Button className="icon-mark">즐겨찾기</Button>
-              <Button className="box" onClick={() => isClick()}>
+              <Button className="box">
                 <p className="stop-name">영통.랜드마크호텔(공항버스)</p>
                 <p className="station-sub-text">
                   <span className="num">02157</span>
@@ -163,7 +159,7 @@ const Page = () => (
           <ListItem>
             <Box>
               <Button className="icon-mark">즐겨찾기</Button>
-              <Button className="box" onClick={() => isClick()}>
+              <Button className="box">
                 <p className="stop-name">영통.랜드마크호텔(공항버스)</p>
                 <p className="station-sub-text">
                   <span className="num">02157</span>
