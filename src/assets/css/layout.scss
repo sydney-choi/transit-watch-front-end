@@ -239,9 +239,11 @@
 }
 
 .station-card {
-   position: relative;
+   position: absolute;
+   z-index:2;
    box-shadow: 0px 4px 10px 0px #00000040;
    width:378px;
+   background:#fff;
    height:606px;
    .top-cont {
       padding:10px;
