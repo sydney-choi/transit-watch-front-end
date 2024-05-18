@@ -52,6 +52,7 @@
    background: #fff;
    position: absolute;
    top: 48px;
+   width:100%;
    z-index: 2;
    box-shadow: 0px 4px 4px 0px #00000040;
    border-radius: 0 0 4px 4px;
@@ -421,9 +422,10 @@
       left:0;
       top:0;
       right:0;
-      background: #fff;
+      background: transparent;
       height:100vh;
       width:auto;
+      z-index: 10;
    }
    .bookmark-cont {
       display: none;
