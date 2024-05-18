@@ -8,7 +8,7 @@ import { MapContainer } from '@/components/map';
 
 const Page = () => (
   <Flex>
-    <Box w="486px" className="action-box">
+    <Box className="action-box">
       {/* <Main /> */}
       {/* 서치박스 */}
       <Box className="search-bar">

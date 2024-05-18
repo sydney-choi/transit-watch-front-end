@@ -2,6 +2,7 @@
    position: relative;
    background: #fff;
    height:100vh;
+   width:486px;
 }
 .search-bar {
    display: flex;
@@ -205,17 +206,17 @@
       &.green {
          margin-top:10px;
          &:after {
-            background-color: $stat-color-green;
+            background-color: $chip-color-green;
          }
       }
       &.blue {
          &:after {
-            background-color: $stat-color-blue;
+            background-color: $chip-color-blue;
          }
       }
       &.red {
          &:after {
-            background-color: $stat-color-red;
+            background-color: $chip-color-red;
          }
       }
    }
@@ -246,7 +247,14 @@
    background:#fff;
    height:606px;
    .top-cont {
-      padding:10px;
+      display: flex;
+      padding:40px 20px 10px;
+      height:174px;
+      width:100%;
+      align-items: center;
+      .station-sub-text {
+         margin:10px 0;
+      }
    }
    .star {
       position: absolute;
@@ -270,7 +278,6 @@
    .station-name {
       font-size: 22px;
       font-weight: 700;
-      margin-top: 58px;
       text-align: center;
    }
    .now-stat {
@@ -292,10 +299,139 @@
    }
    .head {
       display: flex;
-      padding:20px 10px;
+      padding:3px 20px;
       background: #F4F4F4;
       justify-content: space-between;
+      align-items: center;
       font-size: $font-size-s;
       color:$font-color-gray;
+      .tit {
+         font-size: $font-size-s;
+         color:$font-color-gray;
+      }
+      .right {
+         display: flex;
+         align-items: center;
+         .date span {
+            font-size: $font-size-s;
+            color:$font-color-gray;
+            &+span {
+               margin-left:4px;
+            }
+         }
+      }
+      .refresh {
+         font-size: 0;
+         line-height: 0;
+         padding:0;
+         height:29px;
+         width:29px;
+         margin-left: 4px;
+         background: url('/images/ico_refresh.svg') no-repeat 0 0; 
+      }
+   }
+   .bus-list-box {
+      padding:0 10px;
+      max-height: 394px;
+      overflow: auto;
+      &>li + li {
+         border-top:1px solid #D9D9D9;
+      }
+      .bus-wrap {
+         display: flex;
+         align-items: flex-start;
+         justify-content: space-between;
+         padding:20px 10px;
+         .left {
+            display: flex;
+            align-items: flex-start;
+            .badge {
+               padding:4px 6px;
+               border-radius: 2px;
+               font-size: $font-size-xs;
+               font-weight: 600;
+               color:#fff;
+               &.blue {
+                  background: #1E7BDB;
+               }
+               &.green {
+                  background: #59BE0A;
+               }
+               &.red {
+                  background: #E43506;
+               }
+               &.yellow {
+                  background: #F0C305;
+               }
+               &.navy {
+                  background: #404D93;
+               }
+            }
+            .bus-num {
+               margin-left:8px;
+               font-size: $font-size-m;
+               font-weight: 600;
+               line-height: 22px;
+            }
+         }
+         .right {
+            width:36%;
+            &>div {
+               display: flex;
+               justify-content: space-between;
+               .color {
+                  position: relative;
+                  font-size: $font-size-s;
+                  color:$font-color-gray;
+                  &::before {
+                     position: absolute;
+                     left: -14px;
+                     top:4px;
+                     width:10px;
+                     height:10px;
+                     border-radius: 50%;
+                     content:'';
+                  }
+                  &.red::before {
+                     background-color: $chip-color-red;
+                  }
+                  &.green::before {
+                     background-color: $chip-color-green;
+                  }
+                  &.blue::before {
+                     background-color: $chip-color-blue;
+                  }
+                  &.gray::before {
+                     background-color: $chip-color-gray;
+                  }
+               }
+            }
+            .time {
+               font-size: $font-size-s;
+
+            }
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 767px) {
+   .action-box {
+      position: absolute;
+      left:0;
+      top:0;
+      right:0;
+      background: #fff;
+      height:100vh;
+      width:auto;
+   }
+   .bookmark-cont {
+      display: none;
+   }
+   .station-card {
+      position: absolute;
+      left:0 !important;
+      bottom:0 !important;
+      width:100%;
    }
 }

@@ -106,15 +106,17 @@ export const MapContainer = () => {
         <Button className="star">즐겨찾기</Button>
         <Button className="btn-close">닫기</Button>
         <Box className="top-cont">
-          <p className="station-name">동대문디자인플라자.동대문시장 여기는 길면 두줄로 노출되야할듯</p>
-          <p className="station-sub-text">
-            <span className="num">02157</span>
-            <span className="direct">시청, 서소문청사 방면 여기도 내용이 길면 자동으로 말줄임 처리가 됩니다</span>
-          </p>
-          <p className="now-stat red">혼잡(외 컬러필요)</p>
+          <Box>
+            <p className="station-name">동대문디자인플라자.동대문시장 여기는 길면 두줄로 노출이 됩니다</p>
+            <p className="station-sub-text">
+              <span className="num">02157</span>
+              <span className="direct">시청, 서소문청사 방면 여기도 내용이 길면 자동으로 말줄임 처리가 됩니다</span>
+            </p>
+            <p className="now-stat red">혼잡(외 컬러필요)</p>
+          </Box>
         </Box>
         <Box className="head">
-          <p>실시간 버스정보</p>
+          <p className="tit">실시간 버스정보</p>
           <Box className="right">
             <p className="date">
               <span>5/11</span>
@@ -124,15 +126,112 @@ export const MapContainer = () => {
           </Box>
         </Box>
         <List className="bus-list-box">
+          {/* 버스 컬러 간선 blue / 지선 green / 광역 red / 순환 yellow / 심야 navy */}
           <ListItem>
-            <Box>
+            <Box className="bus-wrap">
               <Box className="left">
-                <span className="badge">간선</span>
+                <span className="badge blue">간선</span>
                 <span className="bus-num">05</span>
               </Box>
               <Box className="right">
-                <p>혼잡</p>
-                <p>혼잡</p>
+                <Box>
+                  <span className="color red">혼잡</span>
+                  <span className="time">곧도착</span>
+                </Box>
+                <Box>
+                  <span className="color green">여유</span>
+                  <span className="time">곧도착</span>
+                </Box>
+              </Box>
+            </Box>
+          </ListItem>
+          <ListItem>
+            <Box className="bus-wrap">
+              <Box className="left">
+                <span className="badge green">지선</span>
+                <span className="bus-num">11-1</span>
+              </Box>
+              <Box className="right">
+                <Box>
+                  <span className="color red">혼잡</span>
+                  <span className="time">19분전</span>
+                </Box>
+                <Box>
+                  <span className="color green">여유</span>
+                  <span className="time">정보없음</span>
+                </Box>
+              </Box>
+            </Box>
+          </ListItem>
+          <ListItem>
+            <Box className="bus-wrap">
+              <Box className="left">
+                <span className="badge red">광역</span>
+                <span className="bus-num">1550-1</span>
+              </Box>
+              <Box className="right">
+                <Box>
+                  <span className="color red">혼잡</span>
+                  <span className="time">19분전</span>
+                </Box>
+                <Box>
+                  <span className="color green">여유</span>
+                  <span className="time">정보없음</span>
+                </Box>
+              </Box>
+            </Box>
+          </ListItem>
+          <ListItem>
+            <Box className="bus-wrap">
+              <Box className="left">
+                <span className="badge yellow">순환</span>
+                <span className="bus-num">17-1</span>
+              </Box>
+              <Box className="right">
+                <Box>
+                  <span className="color red">혼잡</span>
+                  <span className="time">19분전</span>
+                </Box>
+                <Box>
+                  <span className="color green">여유</span>
+                  <span className="time">정보없음</span>
+                </Box>
+              </Box>
+            </Box>
+          </ListItem>
+          <ListItem>
+            <Box className="bus-wrap">
+              <Box className="left">
+                <span className="badge navy">심야</span>
+                <span className="bus-num">N7</span>
+              </Box>
+              <Box className="right">
+                <Box>
+                  <span className="color red">혼잡</span>
+                  <span className="time">19분전</span>
+                </Box>
+                <Box>
+                  <span className="color gray">미정</span>
+                  <span className="time">회차대기지연</span>
+                </Box>
+              </Box>
+            </Box>
+          </ListItem>
+          <ListItem>
+            <Box className="bus-wrap">
+              <Box className="left">
+                <span className="badge navy">심야</span>
+                <span className="bus-num">스크롤테스트</span>
+              </Box>
+              <Box className="right">
+                <Box>
+                  <span className="color red">혼잡</span>
+                  <span className="time">19분전</span>
+                </Box>
+                <Box>
+                  <span className="color gray">미정</span>
+                  <span className="time">회차대기지연</span>
+                </Box>
               </Box>
             </Box>
           </ListItem>
