@@ -6,7 +6,6 @@ export const convertSecToMinText = (target: number) => {
   }
 
   const targetMinute = Math.trunc(target / SECONDS_IN_A_MINUTE);
-
   return targetMinute < 1 ? '곧 도착' : `${targetMinute}분`;
 };
 
