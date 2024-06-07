@@ -1,15 +1,13 @@
 export const convertSecToMinText = (target: number) => {
-  const ONE_MINUTE = 1;
-  const targetMinute = Math.trunc(target / 60);
-  let elapsedText = '';
+  const SECONDS_IN_A_MINUTE = 60;
 
-  if (targetMinute < ONE_MINUTE) {
-    elapsedText = '곧 도착';
-  } else {
-    elapsedText = `${targetMinute}분`;
+  if (target === 0) {
+    return '정보 없음';
   }
 
-  return elapsedText;
+  const targetMinute = Math.trunc(target / SECONDS_IN_A_MINUTE);
+
+  return targetMinute < 1 ? '곧 도착' : `${targetMinute}분`;
 };
 
 export const getCurrentTime = () => {
