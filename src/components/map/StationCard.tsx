@@ -4,9 +4,8 @@ import { STATUS_COLOR, STATUS_KR } from '@/constants/status';
 import { useBookmarksStore } from '@/stores/useBookmarkStore';
 import { useGetStationDetail } from '@/hooks/useGetQueries';
 import { getCurrentTime } from '@/lib/utils';
-import { BookmarkButton } from '@/components/common/buttons/bookmark';
-import { CloseButton } from '@/components/common/buttons/close';
-import { RefreshButton } from '@/components/common/buttons/refresh';
+import { Icon } from '@/components/common/icon';
+import { Button } from '@/components/common/button';
 import { BusItem } from '@/components/items/busItem';
 
 interface StationCardProps {
@@ -39,7 +38,9 @@ export const StationCard = forwardRef<HTMLDivElement | null, StationCardProps>((
     !isLoading &&
     isSuccess && (
       <Box position="relative" w="240px" transform="translateX(-50%)" ref={ref} backgroundColor="#fff" boxShadow="lg">
-        <CloseButton style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} onClick={onClick} />
+        <Button style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }} onClick={onClick}>
+          <Icon icon="Close" size="18" />
+        </Button>
         <Box p={3} backgroundColor="#eaeaea" minH={1} textAlign="center">
           <Text color="#616161" fontSize="sm">
             {data.result.station.arsId}
@@ -66,23 +67,27 @@ export const StationCard = forwardRef<HTMLDivElement | null, StationCardProps>((
           </Text>
           <Flex alignItems="center">
             {isFetching ? (
-              <Text fontSize="sm" color="#929292" marginRight={1}>
+              <Text fontSize="sm" color="#929292">
                 데이터 갱신중..
               </Text>
             ) : (
-              <Text fontSize="sm" color="#929292" marginRight={1}>
+              <Text fontSize="sm" color="#929292">
                 {currentTime}
               </Text>
             )}
-            <RefreshButton onClick={handleRefreshClick} />
+            <Button onClick={handleRefreshClick}>
+              <Icon icon="Refresh" size="28" />
+            </Button>
           </Flex>
         </Flex>
         <Box p={1} position="relative">
-          <BookmarkButton
-            style={{ position: 'absolute', top: '-5rem', right: '1rem' }}
-            onClick={handleBookmarkClick}
-            isSavedBookmark={hasBookmark}
-          />
+          <Button style={{ position: 'absolute', top: '-4rem', right: '1rem' }} onClick={handleBookmarkClick}>
+            {hasBookmark ? (
+              <Icon icon="Bookmark" color="#FFDA19" size="22" />
+            ) : (
+              <Icon icon="Bookmark" color="#D9D9D9" size="22" />
+            )}
+          </Button>
           <Box maxH="230px" overflowY="auto">
             {data.result.busList.map((bus) => (
               <BusItem item={bus} key={bus.busId} />
