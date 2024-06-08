@@ -1,5 +1,6 @@
 import { useMap } from 'react-kakao-maps-sdk';
-import { MapFocusButton } from '@/components/common/buttons/map';
+import { Icon } from '@/components/common/icon';
+import { Button } from '@/components/common/button';
 import { Coordinates } from '@/types/location';
 import { useCoordinatesStore } from '@/stores/useCoordinatesStore';
 
@@ -21,7 +22,7 @@ export const ResettingMapCenter = ({ position }: ResettingMapCenterProps) => {
   };
 
   return (
-    <MapFocusButton
+    <Button
       style={{
         display: 'flex',
         justifyContent: 'center',
@@ -37,6 +38,8 @@ export const ResettingMapCenter = ({ position }: ResettingMapCenterProps) => {
         boxShadow: '0 2px 1px 0 rgba(0,0,0,0.1), 0 0 3px 0 rgba(0,0,0,0.32)',
       }}
       onClick={handleOnClick}
-    />
+    >
+      <Icon icon="MapFocus" size="20" />
+    </Button>
   );
 };

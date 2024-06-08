@@ -9,7 +9,7 @@ import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { useFocus } from '@/hooks/useFocus';
 import { Dropdown } from '@/components/search/Dropdown';
 import { useStationStore } from '@/stores/useStationStore';
-import { SearchIcon } from '@/components/icons';
+import { Icon } from '@/components/common/icon';
 import { useCoordinatesStore } from '@/stores/useCoordinatesStore';
 
 export const SearchBox = () => {
@@ -51,7 +51,7 @@ export const SearchBox = () => {
     <Box position="relative">
       <InputGroup size="lg">
         <InputLeftElement>
-          <SearchIcon />
+          <Icon icon="Search" size="32" />
         </InputLeftElement>
         <Input
           ref={inputRef}

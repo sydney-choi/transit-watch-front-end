@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { HomeIcon } from '@/components/icons';
 import { Badge, Box, Flex, Stack, Text, Heading, List } from '@chakra-ui/react';
 import { useBookmarksStore } from '@/stores/useBookmarkStore';
 import { Station } from '@/types/common';
+import { Icon } from '@/components/common/icon';
 import { SearchBox } from '@/components/search';
 import { StationItem } from '@/components/items/stationItem';
 import { useStationStore } from '@/stores/useStationStore';
@@ -41,7 +41,7 @@ export const Main = () => {
       <Flex bgColor="#ff9900" p="20px">
         <Link href="/">
           <Box bgColor="#e3e3e3" minW="40px" p="8px" borderRadius="lg" mr="8px">
-            <HomeIcon />
+            <Icon icon="Home" size="32" />
           </Box>
         </Link>
         <Box flex="1">

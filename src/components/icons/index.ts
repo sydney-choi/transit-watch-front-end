@@ -1,7 +1,17 @@
-export { default as ActiveBookmarkIcon } from '@/components/icons/ActiveBookmarkIcon.svg';
-export { default as InactiveBookmarkIcon } from '@/components/icons/InactiveBookmarkIcon.svg';
-export { default as HomeIcon } from '@/components/icons/HomeIcon.svg';
-export { default as SearchIcon } from '@/components/icons/SearchIcon.svg';
-export { default as CloseIcon } from '@/components/icons/CloseIcon.svg';
-export { default as RefreshIcon } from '@/components/icons/RefreshIcon.svg';
-export { default as MapFocusIcon } from '@/components/icons/MapFocusIcon.svg';
+import Bookmark from '@/components/icons/BookmarkIcon.svg';
+import Home from '@/components/icons/HomeIcon.svg';
+import Search from '@/components/icons/SearchIcon.svg';
+import Close from '@/components/icons/CloseIcon.svg';
+import Refresh from '@/components/icons/RefreshIcon.svg';
+import MapFocus from '@/components/icons/MapFocusIcon.svg';
+
+const Icons = {
+  Bookmark,
+  Home,
+  Search,
+  Close,
+  Refresh,
+  MapFocus,
+};
+
+export default Icons;
